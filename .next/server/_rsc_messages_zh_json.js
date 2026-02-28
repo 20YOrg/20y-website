@@ -1,0 +1,25 @@
+"use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+exports.id = "_rsc_messages_zh_json";
+exports.ids = ["_rsc_messages_zh_json"];
+exports.modules = {
+
+/***/ "(rsc)/./messages/zh.json":
+/*!**************************!*\
+  !*** ./messages/zh.json ***!
+  \**************************/
+/***/ ((module) => {
+
+module.exports = /*#__PURE__*/JSON.parse('{"nav":{"home":"首页","principles":"投资原则","research":"研究","founder":"创始人","login":"登录","logout":"退出","dashboard":"控制台"},"home":{"headline":"二十年投资视野","subtitle":"以第一性原理和机构纪律为基础的长期数字资产投资。","body":"2ØY基金围绕一个核心信念构建：数字资产的变革性价值需要时间、耐心和严格的智识框架。我们以二十年为投资视野，以与这一信念相称的严肃态度进行管理。","links":{"heading":"探索我们的框架","principles":"投资原则","research":"研究与分析","founder":"关于创始人"}},"principles":{"title":"投资原则","card1":{"heading":"将久期作为策略","body":"大多数市场参与者在结构上受制于短期视野。我们将久期本身视为竞争优势——在淘汰短期参与者的周期中坚守，并积累只有时间才能揭示的洞见。"},"card2":{"heading":"第一性原理分析","body":"我们避免共识思维。每个仓位都通过对协议经济学、网络动态和采用曲线的独立分析从头构建。我们在配置之前寻求理解。"},"card3":{"heading":"机构纪律","body":"严格的投资组合构建、明确的风险参数和系统性审查流程。我们将同样的分析标准应用于数字资产，这些标准定义了一流的传统资产管理。"},"card4":{"heading":"集中信念","body":"没有理解的多元化就是投机。我们持有少量仓位，根据信念而非对错误的恐惧来调整规模。集中放大了研究阿尔法，并迫使智识诚实。"}},"founder":{"title":"创始人","name":"Ibai Basabe","credentials":"数学博士，佛罗里达大学 · AI与音乐，查尔斯顿学院 · 音乐会钢琴家 · 研究员，南卡罗来纳医科大学 · 2ØY Fund 创始人","p1":"他成长于伊比利亚半岛北部海岸的一座小镇，是那里的「另类男孩」——痴迷于钢琴、国际象棋和钱币收藏，而非同龄人热衷的体育运动。祖母赠予的一批旧硬币点燃了他对钱币学的早期热情，也引发了他对货币价值本质的深思。这些问题，他从未放下。","p2":"十七岁时，一份全额钢琴奖学金将他带到了美国。他先后取得了古典钢琴与数学学位，此后又完成了研究生学业。这两门学科的组合并非偶然——他始终将它们视为在混沌中寻找结构、在复杂中提炼秩序的方法论。","p3":"2013年，一篇关于比特币的文章让他驻足。他一口气读完了中本聪的白皮书。那套数学体系精妙而优雅，其潜在影响令他震撼。他随即开始早期积累比特币，收到了Coinbase的工作邀约，并于2014年前往迈阿密比特币大会——在那里，年轻的Vitalik Buterin走上舞台，向世界宣布了以太坊的诞生。","p4":"此后数年，他先后执掌一所数学学校、执棒多支管弦乐团，直至2017年迁居上海。在那里，他加入了BitSE，与构建Qtum和VeChain的团队并肩工作，亲历了这一资产类别历史上最具决定性意义的周期之一。这段经历印证了白皮书的昭示：这不是一时的猎奇，而是一场结构性的变革。","p5":"基金的名称源于2019年的一个愿景——三个符号跃然而出：2ØY。「2」代表二元性；「Ø」代表空集，即数学的起源、万物从中生发的虚空；「Y」象征好奇心与探究的分叉逻辑。这个意象成为其后一切事业的组织原则。","p6":"数学与音乐至今仍是他思考世界的双重框架。两者都将秩序强加于不可预测之上，都以耐心与精确为奖励。这也正是他在长期数字资产投资中所秉持的姿态：理解先于配置，时间本身是资产，而纪律——而非速度——才是可持续的优势。"},"research":{"title":"研究与分析","intro":"基于数字资产协议、网络经济学和长期投资框架的第一性原理分析的独立研究。","backLink":"← 返回研究","noArticles":"暂无已发布的研究。请稍后再来。"},"dashboard":{"title":"投资者控制台","investmentSummary":{"heading":"投资摘要","amount":"投资金额","investmentDate":"投资日期","liquidationDate":"清算日期","lockRemaining":"剩余锁定期","status":"状态"},"wallet":{"heading":"钱包信息","address":"钱包地址"},"documents":{"heading":"文件"},"notFound":"未找到投资者记录。"},"auth":{"login":{"title":"投资者登录","email":"电子邮件地址","password":"密码","submit":"登录","error":"凭据无效，请重试。","serverError":"登录服务不可用，请稍后再试。"}},"footer":{"confidential":"机密 — 仅限合格投资者","colNavigate":"导航","colConnect":"联系","colSubscribe":"订阅","newsletter":{"description":"接收研究报告与基金动态更新。","placeholder":"电子邮件地址","button":"订阅"}}}');
+
+/***/ })
+
+};
+;

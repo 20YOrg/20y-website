@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "principles": "Principios",
+    "research": "Investigación",
+    "founder": "Nuestro Fundador",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "dashboard": "Panel"
+  },
+  "home": {
+    "headline": "Un Horizonte de Veinte Años",
+    "subtitle": "Inversión de activos digitales a largo plazo fundamentada en principios básicos y disciplina institucional.",
+    "body": "2ØY Fund está estructurado en torno a una sola convicción: que el valor transformador en los activos digitales requiere tiempo, paciencia y marcos intelectuales rigurosos. Invertimos con un horizonte de veinte años y gestionamos con la seriedad que esa convicción exige.",
+    "links": {
+      "heading": "Explore Nuestro Marco",
+      "principles": "Principios de Inversión",
+      "research": "Investigación y Análisis",
+      "founder": "Sobre Nuestro Fundador"
+    }
+  },
+  "principles": {
+    "title": "Principios de Inversión",
+    "card1": {
+      "heading": "La Duración como Estrategia",
+      "body": "La mayoría de los participantes del mercado están estructuralmente limitados a horizontes de corto plazo. Tratamos la duración en sí misma como una ventaja competitiva: mantenemos posiciones a través de ciclos que eliminan a los jugadores de corto plazo y multiplicamos los conocimientos que solo el tiempo revela."
+    },
+    "card2": {
+      "heading": "Análisis desde Primeros Principios",
+      "body": "Evitamos el pensamiento de consenso. Cada posición se construye desde cero mediante un análisis independiente de la economía del protocolo, la dinámica de la red y las curvas de adopción. Buscamos comprender antes de asignar capital."
+    },
+    "card3": {
+      "heading": "Disciplina Institucional",
+      "body": "Construcción rigurosa de portafolios, parámetros de riesgo definidos y procesos de revisión sistemática. Aplicamos los mismos estándares analíticos a los activos digitales que definen la gestión de activos tradicionales de primer nivel."
+    },
+    "card4": {
+      "heading": "Convicción Concentrada",
+      "body": "La diversificación sin comprensión es especulación. Mantenemos un pequeño número de posiciones dimensionadas por convicción, no por miedo a equivocarnos. La concentración amplifica el alfa de la investigación y fuerza la honestidad intelectual."
+    }
+  },
+  "founder": {
+    "title": "Nuestro Fundador",
+    "name": "Ibai Basabe",
+    "credentials": "Doctor en Matemáticas, Universidad de Florida · IA y Música, College of Charleston · Pianista de Concierto · Investigador, Universidad Médica de Carolina del Sur · Fundador, 2ØY Fund",
+    "p1": "Criado en la costa norte de la península ibérica, era el chico diferente del pueblo — atraído por el piano, el ajedrez y la numismática en lugar de los deportes que ocupaban a sus compañeros. El regalo de su abuela de unas monedas antiguas encendió una fascinación temprana por la numismática y la pregunta de qué otorga valor al dinero. Eran preguntas que no abandonaría.",
+    "p2": "A los diecisiete años, una beca completa de piano lo llevó a Estados Unidos. Obtuvo títulos en piano clásico y matemáticas, a los que luego añadió estudios de posgrado. La combinación no era casual: siempre ha entendido ambas disciplinas como sistemas para encontrar estructura en el caos, coherencia en la complejidad.",
+    "p3": "En 2013, un artículo sobre Bitcoin lo detuvo en seco. Leyó el whitepaper de Satoshi Nakamoto de una sola vez. Las matemáticas eran elegantes, las implicaciones enormes. Comenzó a acumular Bitcoin desde temprano, recibió una oferta de trabajo de Coinbase y en 2014 viajó a la Conferencia Bitcoin de Miami, donde un joven Vitalik Buterin subió al escenario y anunció Ethereum al mundo.",
+    "p4": "Los años siguientes lo llevaron a dirigir una escuela de matemáticas y a conducir orquestas, hasta que en 2017 se trasladó a Shanghái. Allí se unió a BitSE, trabajando junto a los equipos que construían Qtum y VeChain durante uno de los ciclos más decisivos en la historia de esta clase de activos. La experiencia confirmó lo que el whitepaper había sugerido: esto no era una curiosidad pasajera, sino un cambio estructural.",
+    "p5": "El nombre del fondo proviene de una visión en 2019, en la que aparecieron tres símbolos: 2ØY. El dos representa la dualidad. La Ø representa el conjunto vacío — el origen matemático, el vacío del que emerge la estructura. La Y encarna la curiosidad y la lógica ramificada de la indagación. Esa imagen se convirtió en el principio organizador de todo lo que vino después.",
+    "p6": "Las matemáticas y la música siguen siendo sus dos marcos de referencia. Ambas imponen orden sobre la imprevisibilidad. Ambas recompensan la paciencia y la precisión. Es la misma disposición que aplica a la inversión en activos digitales a largo plazo: la convicción de que la comprensión precede a la asignación, que el tiempo es un activo y que la disciplina — no la velocidad — es la ventaja sostenible."
+  },
+  "research": {
+    "title": "Investigación y Análisis",
+    "intro": "Investigación independiente fundamentada en el análisis de primeros principios de protocolos de activos digitales, economía de redes y marcos de inversión a largo plazo.",
+    "backLink": "← Volver a Investigación",
+    "noArticles": "Aún no hay investigaciones publicadas. Vuelve pronto."
+  },
+  "dashboard": {
+    "title": "Panel del Inversor",
+    "investmentSummary": {
+      "heading": "Resumen de Inversión",
+      "amount": "Monto de Inversión",
+      "investmentDate": "Fecha de Inversión",
+      "liquidationDate": "Fecha de Liquidación",
+      "lockRemaining": "Período de Bloqueo Restante",
+      "status": "Estado"
+    },
+    "wallet": {
+      "heading": "Información de Cartera",
+      "address": "Dirección de Cartera"
+    },
+    "documents": {
+      "heading": "Documentos"
+    },
+    "notFound": "Registro de inversor no encontrado."
+  },
+  "auth": {
+    "login": {
+      "title": "Acceso de Inversores",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "submit": "Iniciar Sesión",
+      "error": "Credenciales inválidas. Por favor, inténtalo de nuevo.",
+      "serverError": "Servicio de inicio de sesión no disponible. Por favor, inténtalo más tarde."
+    }
+  },
+  "footer": {
+    "confidential": "Confidencial — Solo para Inversores Acreditados",
+    "colNavigate": "Navegar",
+    "colConnect": "Contacto",
+    "colSubscribe": "Suscribirse",
+    "newsletter": {
+      "description": "Actualizaciones sobre investigación y anuncios del fondo.",
+      "placeholder": "Correo electrónico",
+      "button": "Suscribirse"
+    }
+  }
+}

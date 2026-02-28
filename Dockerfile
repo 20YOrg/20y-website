@@ -16,7 +16,10 @@ RUN npm run build
 
 FROM node:20-alpine
 COPY ./package.json package-lock.json /app/
-COPY --from=production-dependencies-env /app/node_modules /app/node_modules
-COPY --from=build-env /app/build /app/build
+COPY --from=build-env /app/.next/standalone /app/
+COPY --from=build-env /app/.next/static /app/.next/static
+COPY --from=build-env /app/public /app/public
 WORKDIR /app
-CMD ["npm", "run", "start"]
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+CMD ["node", "server.js"]
