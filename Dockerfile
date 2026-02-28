@@ -1,25 +1,24 @@
-FROM node:20-alpine AS development-dependencies-env
-COPY . /app
+FROM node:20-alpine AS builder
+
 WORKDIR /app
+
+COPY package*.json ./
 RUN npm ci
 
-FROM node:20-alpine AS production-dependencies-env
-COPY ./package.json package-lock.json /app/
-WORKDIR /app
-RUN npm ci --omit=dev
-
-FROM node:20-alpine AS build-env
-COPY . /app/
-COPY --from=development-dependencies-env /app/node_modules /app/node_modules
-WORKDIR /app
+COPY . .
 RUN npm run build
 
 FROM node:20-alpine
-COPY ./package.json package-lock.json /app/
-COPY --from=build-env /app/.next/standalone /app/
-COPY --from=build-env /app/.next/static /app/.next/static
-COPY --from=build-env /app/public /app/public
+
 WORKDIR /app
+
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+
+ENV NODE_ENV=production
 ENV PORT=3000
-ENV HOSTNAME=0.0.0.0
-CMD ["node", "server.js"]
+
+EXPOSE 3000
+
+CMD ["npm", "start"]  # adjust to your start script if needed
