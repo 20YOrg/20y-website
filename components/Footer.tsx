@@ -18,7 +18,6 @@ const LINK_STYLE: React.CSSProperties = {
   fontFamily: 'var(--font-sans)',
   fontSize: 13,
   fontWeight: 500,
-  color: '#1a1a1a',
   textDecoration: 'none',
   display: 'block',
   marginBottom: 10,
@@ -75,7 +74,7 @@ export default function Footer() {
             { href: '/research', label: nav('research') },
             { href: '/founder', label: nav('founder') },
           ].map(({ href, label }) => (
-            <Link key={href} href={href} style={LINK_STYLE} className="hover:underline">
+            <Link key={href} href={href} style={LINK_STYLE} className="text-[#1a1a1a] hover:text-[#1C4A60] transition-colors">
               {label}
             </Link>
           ))}
@@ -87,7 +86,7 @@ export default function Footer() {
           <a
             href="mailto:ibai@20y.org"
             style={{ ...LINK_STYLE, display: 'inline-block', marginBottom: 12 }}
-            className="hover:underline"
+            className="text-[#1a1a1a] hover:text-[#1C4A60] transition-colors"
           >
             ibai@20y.org
           </a>
@@ -96,7 +95,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             style={{ ...LINK_STYLE, display: 'flex', alignItems: 'center', gap: 6 }}
-            className="hover:underline hover:opacity-70 transition-opacity"
+            className="text-[#1a1a1a] hover:text-[#1C4A60] transition-colors"
           >
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631zM17.083 20.25l-11.5-15.5h-1.5l11.5 15.5z" />
@@ -146,9 +145,9 @@ export default function Footer() {
                 fontSize: 12,
                 fontWeight: 600,
                 color: '#ffffff',
-                border: '1px solid #1a1a1a',
+                border: '1px solid #1C4A60',
                 padding: '7px 12px',
-                backgroundColor: '#1a1a1a',
+                backgroundColor: '#1C4A60',
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
                 flexShrink: 0,

@@ -48,12 +48,13 @@ export default function UserMenu({ locale }: UserMenuProps) {
         style={{
           fontFamily: 'var(--font-sans)',
           fontSize: 14,
-          color: '#1a1a1a',
-          textDecoration: 'none',
-          border: '1px solid #1a1a1a',
+          fontWeight: 600,
+          border: '1px solid #1C4A60',
           padding: '6px 14px',
+          backgroundColor: '#1C4A60',
+          color: '#ffffff',
         }}
-        className="hover:bg-black hover:text-white transition-colors"
+        className="no-underline hover:opacity-80 transition-opacity"
       >
         {t('login')}
       </Link>
