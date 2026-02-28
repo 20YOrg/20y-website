@@ -1,0 +1,7 @@
+[phases.build]
+cmds = ["npm run build"]
+dependsOn = ["setup"]
+
+[providers]
+dockerfile = true
+nixpacks = false
