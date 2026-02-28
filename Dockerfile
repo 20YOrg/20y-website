@@ -21,4 +21,4 @@ ENV PORT=3000
 
 EXPOSE 3000
 
-CMD ["npm", "start"]  # adjust to your start script if needed
+CMD ["npm", "start"]  # Change to your actual start command if different
