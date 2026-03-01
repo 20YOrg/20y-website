@@ -5,7 +5,7 @@ export interface ResearchPost {
   id: string
   slug: string
   title: string
-  date_published: string
+  publish_date: string
   executive_summary: string
   video_url?: string
   framework_image?: string
@@ -26,7 +26,7 @@ export async function getPublishedResearchPosts(): Promise<ResearchPost[]> {
   if (!BASE) return []
   try {
     const res = await fetch(
-      `${BASE}/items/research_posts?filter[status][_eq]=published&sort=-date_published`,
+      `${BASE}/items/research_posts?filter[status][_eq]=published&sort=-publish_date`,
       {
         headers: { Authorization: `Bearer ${TOKEN}` },
         next: { revalidate: 3600 },

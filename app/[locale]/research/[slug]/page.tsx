@@ -46,7 +46,7 @@ export default async function ResearchDetailPage({
           marginBottom: 16,
         }}
       >
-        {formatDate(post.date_published, locale)}
+        {formatDate(post.publish_date, locale)}
       </div>
 
       <h1

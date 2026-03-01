@@ -26,7 +26,7 @@ export default function ResearchCard({ post, locale }: ResearchCardProps) {
           letterSpacing: '0.05em',
         }}
       >
-        {formatDate(post.date_published, locale)}
+        {formatDate(post.publish_date, locale)}
       </div>
       <h3
         style={{
