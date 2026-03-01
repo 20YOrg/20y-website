@@ -1,20 +1,23 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import type { FormEvent } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter, useParams } from 'next/navigation'
+import { useRouter, useParams, useSearchParams } from 'next/navigation'
 
 function localePath(locale: string, path: string) {
   if (locale === 'en') return path
   return `/${locale}${path === '/' ? '' : path}`
 }
 
-export default function LoginPage() {
+function LoginForm() {
   const t = useTranslations('auth.login')
   const router = useRouter()
   const params = useParams()
+  const searchParams = useSearchParams()
   const locale = (params.locale as string) || 'en'
+  const inviteSuccess = searchParams.get('invited') === '1'
+  const resetSuccess = searchParams.get('reset') === '1'
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -58,11 +61,26 @@ export default function LoginPage() {
           fontSize: 32,
           fontWeight: 400,
           color: '#1a1a1a',
-          marginBottom: 40,
+          marginBottom: (inviteSuccess || resetSuccess) ? 16 : 40,
         }}
       >
         {t('title')}
       </h1>
+
+      {(inviteSuccess || resetSuccess) && (
+        <p
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontSize: 14,
+            color: '#1a1a1a',
+            border: '1px solid #e5e5e5',
+            padding: '10px 14px',
+            marginBottom: 32,
+          }}
+        >
+          {inviteSuccess ? t('inviteSuccess') : t('resetSuccess')}
+        </p>
+      )}
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-5">
         <div className="flex flex-col gap-2">
@@ -158,5 +176,13 @@ export default function LoginPage() {
         </button>
       </form>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense>
+      <LoginForm />
+    </Suspense>
   )
 }

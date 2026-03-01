@@ -81,7 +81,31 @@
       "password": "Contraseña",
       "submit": "Iniciar Sesión",
       "error": "Credenciales inválidas. Por favor, inténtalo de nuevo.",
-      "serverError": "Servicio de inicio de sesión no disponible. Por favor, inténtalo más tarde."
+      "serverError": "Servicio de inicio de sesión no disponible. Por favor, inténtalo más tarde.",
+      "inviteSuccess": "Tu cuenta ha sido creada. Por favor, inicia sesión.",
+      "resetSuccess": "Tu contraseña ha sido establecida. Por favor, inicia sesión."
+    },
+    "resetPassword": {
+      "title": "Establece Tu Contraseña",
+      "subtitle": "Establece una contraseña para tu cuenta de inversor.",
+      "password": "Nueva Contraseña",
+      "confirm": "Confirmar Contraseña",
+      "submit": "Establecer Contraseña",
+      "mismatch": "Las contraseñas no coinciden.",
+      "invalidToken": "Este enlace no es válido o ha expirado.",
+      "serverError": "Algo salió mal. Por favor, inténtalo de nuevo.",
+      "noToken": "Enlace no válido. Por favor, usa el enlace de tu correo."
+    },
+    "acceptInvite": {
+      "title": "Crea Tu Contraseña",
+      "subtitle": "Establece una contraseña para tu cuenta de inversor.",
+      "password": "Nueva Contraseña",
+      "confirm": "Confirmar Contraseña",
+      "submit": "Establecer Contraseña",
+      "mismatch": "Las contraseñas no coinciden.",
+      "invalidToken": "Este enlace de invitación no es válido o ha expirado.",
+      "serverError": "Algo salió mal. Por favor, inténtalo de nuevo.",
+      "noToken": "Enlace de invitación no válido. Por favor, usa el enlace de tu correo de invitación."
     }
   },
   "footer": {

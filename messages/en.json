@@ -81,7 +81,31 @@
       "password": "Password",
       "submit": "Sign In",
       "error": "Invalid credentials. Please try again.",
-      "serverError": "Login service unavailable. Please try again later."
+      "serverError": "Login service unavailable. Please try again later.",
+      "inviteSuccess": "Your account has been created. Please sign in.",
+      "resetSuccess": "Your password has been set. Please sign in."
+    },
+    "resetPassword": {
+      "title": "Set Your Password",
+      "subtitle": "Set a password for your investor account.",
+      "password": "New Password",
+      "confirm": "Confirm Password",
+      "submit": "Set Password",
+      "mismatch": "Passwords do not match.",
+      "invalidToken": "This link is invalid or has expired.",
+      "serverError": "Something went wrong. Please try again.",
+      "noToken": "Invalid link. Please use the link from your email."
+    },
+    "acceptInvite": {
+      "title": "Create Your Password",
+      "subtitle": "Set a password for your investor account.",
+      "password": "New Password",
+      "confirm": "Confirm Password",
+      "submit": "Set Password",
+      "mismatch": "Passwords do not match.",
+      "invalidToken": "This invite link is invalid or has expired.",
+      "serverError": "Something went wrong. Please try again.",
+      "noToken": "Invalid invite link. Please use the link from your invitation email."
     }
   },
   "footer": {

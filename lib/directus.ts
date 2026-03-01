@@ -92,13 +92,17 @@ export async function logoutUser(refreshToken: string) {
 export async function getCurrentUser(token: string) {
   if (!BASE) return null
   try {
-    const res = await fetch(`${BASE}/users/me`, {
+    const res = await fetch(`${BASE}/users/me?fields=id,email,first_name,last_name,role.admin_access`, {
       headers: { Authorization: `Bearer ${token}` },
       cache: 'no-store',
     })
     if (!res.ok) return null
     const json = await res.json()
-    return json.data as { id: string; email: string; first_name?: string; last_name?: string }
+    const data = json.data
+    return {
+      ...data,
+      admin_access: data?.role?.admin_access === true,
+    } as { id: string; email: string; first_name?: string; last_name?: string; admin_access?: boolean }
   } catch {
     return null
   }
