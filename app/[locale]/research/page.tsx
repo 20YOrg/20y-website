@@ -51,7 +51,7 @@ export default async function ResearchPage() {
           {t('noArticles')}
         </p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-8">
+        <div className="flex flex-col">
           {posts.map((post) => (
             <ResearchCard
               key={post.id}

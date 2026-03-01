@@ -1,6 +1,11 @@
 const BASE = process.env.NEXT_PUBLIC_DIRECTUS_URL
 const TOKEN = process.env.DIRECTUS_TOKEN
 
+export function getAssetUrl(id: string | null | undefined): string | null {
+  if (!id || !BASE) return null
+  return `${BASE}/assets/${id}`
+}
+
 export interface ResearchPost {
   id: string
   slug: string

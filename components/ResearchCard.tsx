@@ -1,5 +1,7 @@
+import FadeImage from './FadeImage'
 import { Link } from '@/navigation'
 import { formatDate } from '@/lib/utils'
+import { getAssetUrl } from '@/lib/directus'
 import type { ResearchPost } from '@/lib/directus'
 
 interface ResearchCardProps {
@@ -8,56 +10,80 @@ interface ResearchCardProps {
 }
 
 export default function ResearchCard({ post, locale }: ResearchCardProps) {
+  const plainSummary = post.executive_summary.replace(/<[^>]*>/g, '')
+  const imageUrl = getAssetUrl(post.framework_image)
+
   return (
-    <div
-      style={{
-        borderTop: '1px solid #e5e5e5',
-        paddingTop: 20,
-        paddingBottom: 20,
-      }}
+    <Link
+      href={`/research/${post.slug}`}
+      style={{ textDecoration: 'none', display: 'block' }}
+      className="group"
     >
       <div
         style={{
-          fontFamily: 'var(--font-sans)',
-          fontSize: 12,
-          color: '#7a7a7a',
-          marginBottom: 8,
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
+          borderTop: '1px solid #e5e5e5',
+          paddingTop: 24,
+          paddingBottom: 24,
         }}
+        className="flex gap-6 md:gap-10 items-start group-hover:opacity-75 transition-opacity"
       >
-        {formatDate(post.publish_date, locale)}
+        {imageUrl && (
+          <div
+            style={{
+              position: 'relative',
+              flexShrink: 0,
+              width: 'clamp(120px, 22vw, 220px)',
+              aspectRatio: '16/9',
+              overflow: 'hidden',
+              backgroundColor: '#f0f0f0',
+            }}
+          >
+            <FadeImage
+              src={imageUrl}
+              alt={post.title}
+              sizes="(max-width: 768px) 30vw, 220px"
+            />
+          </div>
+        )}
+
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: 11,
+              color: '#7a7a7a',
+              marginBottom: 8,
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+            }}
+          >
+            {formatDate(post.publish_date, locale)}
+          </div>
+          <h3
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: 'clamp(18px, 3vw, 22px)',
+              fontWeight: 500,
+              color: '#1a1a1a',
+              marginBottom: 10,
+              lineHeight: 1.3,
+            }}
+            className="group-hover:text-[#1C4A60] transition-colors"
+          >
+            {post.title}
+          </h3>
+          <p
+            style={{
+              fontFamily: 'var(--font-sans)',
+              fontSize: 14,
+              color: '#4a4a4a',
+              lineHeight: 1.65,
+            }}
+          >
+            {plainSummary.length > 180 ? plainSummary.slice(0, 180) + '…' : plainSummary}
+          </p>
+        </div>
       </div>
-      <h3
-        style={{
-          fontFamily: 'var(--font-serif)',
-          fontSize: 20,
-          fontWeight: 500,
-          color: '#1a1a1a',
-          marginBottom: 8,
-          lineHeight: 1.3,
-        }}
-      >
-        <Link
-          href={`/research/${post.slug}`}
-          style={{ textDecoration: 'none', color: 'inherit' }}
-          className="hover:underline"
-        >
-          {post.title}
-        </Link>
-      </h3>
-      <p
-        style={{
-          fontFamily: 'var(--font-sans)',
-          fontSize: 14,
-          color: '#4a4a4a',
-          lineHeight: 1.6,
-        }}
-      >
-        {post.executive_summary.length > 160
-          ? post.executive_summary.slice(0, 160) + '…'
-          : post.executive_summary}
-      </p>
-    </div>
+    </Link>
   )
 }

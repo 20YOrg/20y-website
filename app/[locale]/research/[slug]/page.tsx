@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation'
 import { getTranslations, getLocale } from 'next-intl/server'
 import { Link } from '@/navigation'
-import { getResearchPostBySlug } from '@/lib/directus'
+import { getResearchPostBySlug, getAssetUrl } from '@/lib/directus'
 import { formatDate } from '@/lib/utils'
+import ProseContent from '@/components/ProseContent'
 
 export default async function ResearchDetailPage({
   params,
@@ -87,28 +88,8 @@ export default async function ResearchDetailPage({
         </div>
       )}
 
-      <p
-        style={{
-          fontFamily: 'var(--font-sans)',
-          fontSize: 16,
-          color: '#4a4a4a',
-          lineHeight: 1.75,
-          marginBottom: 32,
-        }}
-      >
-        {post.executive_summary}
-      </p>
+      <ProseContent html={post.executive_summary} />
 
-      {post.framework_image && (
-        <div style={{ marginTop: 32 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={post.framework_image}
-            alt={`${post.title} framework`}
-            style={{ width: '100%', border: '1px solid #e5e5e5' }}
-          />
-        </div>
-      )}
     </div>
   )
 }
