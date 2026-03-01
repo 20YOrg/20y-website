@@ -1,4 +1,4 @@
-.react-router
-build
+.next
 node_modules
+.env*.local
 README.md
