@@ -26,7 +26,7 @@ export async function getPublishedResearchPosts(): Promise<ResearchPost[]> {
   if (!BASE) return []
   try {
     const res = await fetch(
-      `${BASE}/items/research?filter[status][_eq]=published&sort=-date_published`,
+      `${BASE}/items/research_posts?filter[status][_eq]=published&sort=-date_published`,
       {
         headers: { Authorization: `Bearer ${TOKEN}` },
         next: { revalidate: 3600 },
@@ -44,7 +44,7 @@ export async function getResearchPostBySlug(slug: string): Promise<ResearchPost 
   if (!BASE) return null
   try {
     const res = await fetch(
-      `${BASE}/items/research?filter[slug][_eq]=${encodeURIComponent(slug)}&filter[status][_eq]=published&limit=1`,
+      `${BASE}/items/research_posts?filter[slug][_eq]=${encodeURIComponent(slug)}&filter[status][_eq]=published&limit=1`,
       {
         headers: { Authorization: `Bearer ${TOKEN}` },
         next: { revalidate: 3600 },
