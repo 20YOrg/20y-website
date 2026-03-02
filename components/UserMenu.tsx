@@ -6,9 +6,10 @@ import { useRouter, Link } from '@/navigation'
 
 interface UserMenuProps {
   locale: string
+  onClose?: () => void
 }
 
-export default function UserMenu({ locale }: UserMenuProps) {
+export default function UserMenu({ locale, onClose }: UserMenuProps) {
   const t = useTranslations('nav')
   const router = useRouter()
   const [user, setUser] = useState<{ email: string; name?: string } | null>(null)
@@ -45,6 +46,7 @@ export default function UserMenu({ locale }: UserMenuProps) {
     return (
       <Link
         href="/auth/login"
+        onClick={onClose}
         style={{
           fontFamily: 'var(--font-sans)',
           fontSize: 14,

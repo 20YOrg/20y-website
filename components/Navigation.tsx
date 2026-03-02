@@ -202,7 +202,7 @@ export default function Navigation() {
                 </span>
               ))}
             </div>
-            <UserMenu locale={locale} />
+            <UserMenu locale={locale} onClose={() => setOpen(false)} />
           </div>
         </div>
       )}
