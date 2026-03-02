@@ -121,7 +121,10 @@
     "newsletter": {
       "description": "Actualizaciones sobre investigación y anuncios del fondo.",
       "placeholder": "Correo electrónico",
-      "button": "Suscribirse"
+      "button": "Suscribirse",
+      "success": "Te has suscrito.",
+      "duplicate": "Este correo ya está suscrito.",
+      "error": "Algo salió mal. Por favor, inténtalo de nuevo."
     }
   }
 }

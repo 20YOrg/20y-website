@@ -121,7 +121,10 @@
     "newsletter": {
       "description": "Updates on research and fund announcements.",
       "placeholder": "Email address",
-      "button": "Subscribe"
+      "button": "Subscribe",
+      "success": "You're subscribed.",
+      "duplicate": "This email is already subscribed.",
+      "error": "Something went wrong. Please try again."
     }
   }
 }

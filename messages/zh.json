@@ -121,7 +121,10 @@
     "newsletter": {
       "description": "接收研究报告与基金动态更新。",
       "placeholder": "电子邮件地址",
-      "button": "订阅"
+      "button": "订阅",
+      "success": "订阅成功。",
+      "duplicate": "该邮箱已订阅。",
+      "error": "出现错误，请重试。"
     }
   }
 }

@@ -27,6 +27,29 @@ export default function Footer() {
   const t = useTranslations('footer')
   const nav = useTranslations('nav')
   const [email, setEmail] = useState('')
+  const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'success' | 'duplicate' | 'error'>('idle')
+
+  async function handleSubscribe(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email) return
+    setSubStatus('loading')
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (res.ok) {
+        setSubStatus('success')
+        setEmail('')
+      } else {
+        const data = await res.json().catch(() => ({}))
+        setSubStatus(data.error === 'duplicate' ? 'duplicate' : 'error')
+      }
+    } catch {
+      setSubStatus('error')
+    }
+  }
 
   return (
     <footer style={{ backgroundColor: '#fafafa' }}>
@@ -118,45 +141,61 @@ export default function Footer() {
           >
             {t('newsletter.description')}
           </p>
-          <div className="flex">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder={t('newsletter.placeholder')}
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: 12,
-                color: '#1a1a1a',
-                borderTop: '1px solid #e5e5e5',
-                borderBottom: '1px solid #e5e5e5',
-                borderLeft: '1px solid #e5e5e5',
-                borderRight: 'none',
-                backgroundColor: '#ffffff',
-                padding: '7px 10px',
-                outline: 'none',
-                flex: 1,
-                minWidth: 0,
-              }}
-            />
-            <button
-              style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: 12,
-                fontWeight: 600,
-                color: '#ffffff',
-                border: '1px solid #1C4A60',
-                padding: '7px 12px',
-                backgroundColor: '#1C4A60',
-                cursor: 'pointer',
-                whiteSpace: 'nowrap',
-                flexShrink: 0,
-              }}
-              className="hover:opacity-80 transition-opacity"
-            >
-              {t('newsletter.button')}
-            </button>
-          </div>
+          {subStatus === 'success' ? (
+            <p style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: '#1a1a1a' }}>
+              {t('newsletter.success')}
+            </p>
+          ) : (
+            <form onSubmit={handleSubscribe}>
+              <div className="flex">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setSubStatus('idle') }}
+                  placeholder={t('newsletter.placeholder')}
+                  required
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: 12,
+                    color: '#1a1a1a',
+                    borderTop: '1px solid #e5e5e5',
+                    borderBottom: '1px solid #e5e5e5',
+                    borderLeft: '1px solid #e5e5e5',
+                    borderRight: 'none',
+                    backgroundColor: '#ffffff',
+                    padding: '7px 10px',
+                    outline: 'none',
+                    flex: 1,
+                    minWidth: 0,
+                  }}
+                />
+                <button
+                  type="submit"
+                  disabled={subStatus === 'loading'}
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: '#ffffff',
+                    border: '1px solid #1C4A60',
+                    padding: '7px 12px',
+                    backgroundColor: '#1C4A60',
+                    cursor: subStatus === 'loading' ? 'not-allowed' : 'pointer',
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                  }}
+                  className="hover:opacity-80 transition-opacity"
+                >
+                  {subStatus === 'loading' ? '…' : t('newsletter.button')}
+                </button>
+              </div>
+              {(subStatus === 'duplicate' || subStatus === 'error') && (
+                <p style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: '#b00', marginTop: 6 }}>
+                  {subStatus === 'duplicate' ? t('newsletter.duplicate') : t('newsletter.error')}
+                </p>
+              )}
+            </form>
+          )}
         </div>
       </div>
 
