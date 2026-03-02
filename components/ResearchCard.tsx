@@ -25,23 +25,22 @@ export default function ResearchCard({ post, locale }: ResearchCardProps) {
           paddingTop: 24,
           paddingBottom: 24,
         }}
-        className="flex gap-6 md:gap-10 items-start group-hover:opacity-75 transition-opacity"
+        className="flex flex-col md:flex-row gap-4 md:gap-10 md:items-start group-hover:opacity-75 transition-opacity"
       >
         {imageUrl && (
           <div
             style={{
               position: 'relative',
-              flexShrink: 0,
-              width: 'clamp(120px, 22vw, 220px)',
               aspectRatio: '16/9',
               overflow: 'hidden',
               backgroundColor: '#f0f0f0',
             }}
+            className="w-full md:w-[200px] md:flex-shrink-0"
           >
             <FadeImage
               src={imageUrl}
               alt={post.title}
-              sizes="(max-width: 768px) 30vw, 220px"
+              sizes="(max-width: 768px) 100vw, 200px"
             />
           </div>
         )}
