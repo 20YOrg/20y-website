@@ -57,6 +57,11 @@
   },
   "dashboard": {
     "title": "Panel del Inversor",
+    "investorInfo": {
+      "heading": "Información del Inversor",
+      "name": "Nombre Completo",
+      "email": "Correo Electrónico"
+    },
     "investmentSummary": {
       "heading": "Resumen de Inversión",
       "amount": "Monto de Inversión",

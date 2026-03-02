@@ -11,5 +11,6 @@ export async function POST(request: NextRequest) {
   const response = NextResponse.json({ success: true })
   response.cookies.delete('directus_token')
   response.cookies.delete('directus_refresh_token')
+  response.cookies.delete('directus_email')
   return response
 }

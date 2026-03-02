@@ -22,6 +22,7 @@ export interface Investor {
   email: string
   investor_name: string
   investment_amount: number
+  currency: string
   investment_date: string
   wallet_address: string
   status: 'active' | 'pending' | 'closed'
@@ -92,7 +93,7 @@ export async function logoutUser(refreshToken: string) {
 export async function getCurrentUser(token: string) {
   if (!BASE) return null
   try {
-    const res = await fetch(`${BASE}/users/me?fields=id,email,first_name,last_name,role.admin_access`, {
+    const res = await fetch(`${BASE}/users/me`, {
       headers: { Authorization: `Bearer ${token}` },
       cache: 'no-store',
     })
@@ -100,7 +101,10 @@ export async function getCurrentUser(token: string) {
     const json = await res.json()
     const data = json.data
     return {
-      ...data,
+      id: data?.id,
+      email: data?.email,
+      first_name: data?.first_name,
+      last_name: data?.last_name,
       admin_access: data?.role?.admin_access === true,
     } as { id: string; email: string; first_name?: string; last_name?: string; admin_access?: boolean }
   } catch {
@@ -108,13 +112,13 @@ export async function getCurrentUser(token: string) {
   }
 }
 
-export async function getInvestorByEmail(email: string, token: string): Promise<Investor | null> {
-  if (!BASE) return null
+export async function getInvestorByEmail(email: string): Promise<Investor | null> {
+  if (!BASE || !TOKEN) return null
   try {
     const res = await fetch(
       `${BASE}/items/investors?filter[email][_eq]=${encodeURIComponent(email)}&limit=1`,
       {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { Authorization: `Bearer ${TOKEN}` },
         cache: 'no-store',
       }
     )

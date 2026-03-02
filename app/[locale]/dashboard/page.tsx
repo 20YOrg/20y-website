@@ -2,7 +2,7 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { getTranslations, getLocale } from 'next-intl/server'
 import { getCurrentUser, getInvestorByEmail } from '@/lib/directus'
-import { formatDate, addYears, monthsRemaining } from '@/lib/utils'
+import { formatDate } from '@/lib/utils'
 
 export default async function DashboardPage() {
   const cookieStore = await cookies()
@@ -15,15 +15,13 @@ export default async function DashboardPage() {
     redirect(loginPath)
   }
 
-  const user = await getCurrentUser(token!)
-  if (!user) {
+  const email = cookieStore.get('directus_email')?.value
+  if (!email) {
     const loginPath = locale === 'en' ? '/auth/login' : `/${locale}/auth/login`
     redirect(loginPath)
   }
 
-  const investor = await getInvestorByEmail(user.email, token!)
-  const liquidationDate = investor ? addYears(investor.investment_date, 5) : null
-  const lockMonths = liquidationDate ? monthsRemaining(liquidationDate) : null
+  const investor = await getInvestorByEmail(email)
 
   return (
     <div
@@ -36,7 +34,7 @@ export default async function DashboardPage() {
           fontSize: 'clamp(28px, 5vw, 40px)',
           fontWeight: 400,
           color: '#1a1a1a',
-          marginBottom: 40,
+          marginBottom: 48,
           lineHeight: 1.2,
         }}
       >
@@ -49,6 +47,24 @@ export default async function DashboardPage() {
         </p>
       ) : (
         <div className="flex flex-col gap-12">
+          {/* Investor Information */}
+          <section>
+            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 22, fontWeight: 500, color: '#1a1a1a', marginBottom: 20, paddingBottom: 12, borderBottom: '1px solid #e5e5e5' }}>
+              {t('investorInfo.heading')}
+            </h2>
+            <dl className="flex flex-col gap-4">
+              {[
+                { label: t('investorInfo.name'), value: investor.investor_name },
+                { label: t('investorInfo.email'), value: investor.email },
+              ].map(({ label, value }) => (
+                <div key={label} className="flex flex-col sm:flex-row sm:gap-8">
+                  <dt style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: '#7a7a7a', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 2 }} className="sm:min-w-[200px] sm:text-base sm:normal-case sm:tracking-normal">{label}</dt>
+                  <dd style={{ fontFamily: 'var(--font-sans)', fontSize: 15, color: '#1a1a1a' }}>{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
           {/* Investment Summary */}
           <section>
             <h2
@@ -66,10 +82,8 @@ export default async function DashboardPage() {
             </h2>
             <dl className="flex flex-col gap-4">
               {[
-                { label: t('investmentSummary.amount'), value: `$${investor.investment_amount.toLocaleString()}` },
+                { label: t('investmentSummary.amount'), value: `${Number(investor.investment_amount).toLocaleString('en-US')} ${investor.currency ?? 'USDT'}` },
                 { label: t('investmentSummary.investmentDate'), value: formatDate(investor.investment_date, locale) },
-                { label: t('investmentSummary.liquidationDate'), value: formatDate(liquidationDate!, locale) },
-                { label: t('investmentSummary.lockRemaining'), value: `${lockMonths} months` },
                 { label: t('investmentSummary.status'), value: investor.status.charAt(0).toUpperCase() + investor.status.slice(1) },
               ].map(({ label, value }) => (
                 <div key={label} className="flex flex-col sm:flex-row sm:gap-8">

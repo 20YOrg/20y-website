@@ -57,6 +57,11 @@
   },
   "dashboard": {
     "title": "Investor Dashboard",
+    "investorInfo": {
+      "heading": "Investor Information",
+      "name": "Full Name",
+      "email": "Email Address"
+    },
     "investmentSummary": {
       "heading": "Investment Summary",
       "amount": "Investment Amount",

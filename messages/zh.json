@@ -57,6 +57,11 @@
   },
   "dashboard": {
     "title": "投资者控制台",
+    "investorInfo": {
+      "heading": "投资者信息",
+      "name": "姓名",
+      "email": "电子邮件地址"
+    },
     "investmentSummary": {
       "heading": "投资摘要",
       "amount": "投资金额",

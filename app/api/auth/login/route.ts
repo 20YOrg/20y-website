@@ -11,6 +11,14 @@ export async function POST(request: NextRequest) {
     const tokens = await loginUser(body.email, body.password)
     const response = NextResponse.json({ success: true })
 
+    response.cookies.set('directus_email', body.email, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: Math.floor(tokens.expires / 1000),
+      path: '/',
+    })
+
     response.cookies.set('directus_token', tokens.access_token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
