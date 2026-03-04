@@ -85,7 +85,7 @@ export default function Footer() {
               maxWidth: 200,
             }}
           >
-            A twenty-year horizon in digital asset investment.
+            A twenty-year horizon in digital asset management.
           </p>
         </div>
 

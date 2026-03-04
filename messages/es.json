@@ -10,32 +10,47 @@
   },
   "home": {
     "headline": "Un Horizonte de Veinte Años",
-    "subtitle": "Inversión de activos digitales a largo plazo fundamentada en principios básicos y disciplina institucional.",
+    "tagline": "El futuro pertenece a quienes pueden modelar la incertidumbre con precisión.",
+    "subtitle": "Gestión de activos digitales a largo plazo fundamentada en principios básicos y disciplina institucional.",
     "body": "2ØY Fund está estructurado en torno a una sola convicción: que el valor transformador en los activos digitales requiere tiempo, paciencia y marcos intelectuales rigurosos. Invertimos con un horizonte de veinte años y gestionamos con la seriedad que esa convicción exige.",
-    "links": {
-      "heading": "Explore Nuestro Marco",
-      "principles": "Principios de Inversión",
-      "research": "Investigación y Análisis",
-      "founder": "Sobre Nuestro Fundador"
+    "mission1": "El 2ØY Fund está dedicado a quienes están convencidos de que las matemáticas — imparciales y universales — trazan el camino más claro hacia la unidad humana: un mundo igualitario en el que cada persona sea un par genuino.",
+    "mission2": "Desde esta perspectiva, concebimos la sociedad como un gran proyecto colaborativo, donde la competencia se convierte en el catalizador para explorar múltiples paradigmas tecnológicos, fomentando la innovación a través de la diversidad en lugar de la división.",
+    "ethosLabel": "Nuestro Ethos",
+    "sections": {
+      "principlesLabel": "Nuestro Enfoque Principal",
+      "principlesLink": "Principios de Inversión",
+      "researchLabel": "Nuestras Últimas Reflexiones",
+      "researchLink": "Investigación y Análisis",
+      "founderHook": "Un pianista de concierto y doctor en matemáticas que encontró la señal de Bitcoin antes de que el mundo oyera el ruido.",
+      "founderLink": "Nuestro Fundador",
+      "subscribeLabel": "Mantente Informado",
+      "subscribeDesc": "Suscríbete para recibir nuestros informes del fondo e ideas estructuradas sobre ciclos de mercado.",
+      "subscribePlaceholder": "Correo electrónico",
+      "subscribeButton": "Suscribirse",
+      "subscribeSuccess": "Te has suscrito.",
+      "subscribeDuplicate": "Ya estás suscrito.",
+      "subscribeError": "Algo salió mal."
     }
   },
   "principles": {
     "title": "Principios de Inversión",
+    "tagline": "El futuro pertenece a quienes pueden modelar la incertidumbre con precisión.",
+    "subtitle": "Estos principios guían cada decisión en 2ØY — convirtiendo la convicción a largo plazo en acción disciplinada.",
     "card1": {
       "heading": "La Duración como Estrategia",
-      "body": "La mayoría de los participantes del mercado están estructuralmente limitados a horizontes de corto plazo. Tratamos la duración en sí misma como una ventaja competitiva: mantenemos posiciones a través de ciclos que eliminan a los jugadores de corto plazo y multiplicamos los conocimientos que solo el tiempo revela."
+      "body": "La mayoría de los participantes están atrapados por restricciones a corto plazo — estructurales, psicológicas o impulsadas por incentivos. La duración se convierte en nuestra ventaja principal: mantenemos posiciones a través de ciclos completos, permitiendo que el tiempo elimine el ruido, exponga estructuras débiles y multiplique los conocimientos genuinos que los horizontes más cortos nunca alcanzan."
     },
     "card2": {
       "heading": "Análisis desde Primeros Principios",
-      "body": "Evitamos el pensamiento de consenso. Cada posición se construye desde cero mediante un análisis independiente de la economía del protocolo, la dinámica de la red y las curvas de adopción. Buscamos comprender antes de asignar capital."
+      "body": "El consenso suele ser perezoso. Cada asignación comienza desde cero: deconstruyendo la economía del protocolo, los incentivos de tokens, los efectos de red y las trayectorias de adopción. Construimos comprensión antes que capital — buscando la verdad en los fundamentos, no en las narrativas del mercado."
     },
     "card3": {
       "heading": "Disciplina Institucional",
-      "body": "Construcción rigurosa de portafolios, parámetros de riesgo definidos y procesos de revisión sistemática. Aplicamos los mismos estándares analíticos a los activos digitales que definen la gestión de activos tradicionales de primer nivel."
+      "body": "La precisión exige proceso. Aplicamos una construcción rigurosa de portafolios, parámetros de riesgo explícitos, revisiones sistemáticas y el mismo rigor analítico aplicado a los activos tradicionales. Modelar la incertidumbre no es intuición — es un marco repetible que protege la convicción de la emoción."
     },
     "card4": {
       "heading": "Convicción Concentrada",
-      "body": "La diversificación sin comprensión es especulación. Mantenemos un pequeño número de posiciones dimensionadas por convicción, no por miedo a equivocarnos. La concentración amplifica el alfa de la investigación y fuerza la honestidad intelectual."
+      "body": "La diversificación por sí misma es especulación disfrazada. Concentramos donde la comprensión es más profunda, dimensionando posiciones por convicción genuina en lugar de miedo a la varianza. Esto fuerza la honestidad intelectual y amplifica el alfa que proviene de una investigación profunda y paciente."
     }
   },
   "founder": {
@@ -47,7 +62,7 @@
     "p3": "En 2013, un artículo sobre Bitcoin lo detuvo en seco. Leyó el whitepaper de Satoshi Nakamoto de una sola vez. Las matemáticas eran elegantes, las implicaciones enormes. Comenzó a acumular Bitcoin desde temprano, recibió una oferta de trabajo de Coinbase y en 2014 viajó a la Conferencia Bitcoin de Miami, donde un joven Vitalik Buterin subió al escenario y anunció Ethereum al mundo.",
     "p4": "Los años siguientes lo llevaron a dirigir una escuela de matemáticas y a conducir orquestas, hasta que en 2017 se trasladó a Shanghái. Allí se unió a BitSE, trabajando junto a los equipos que construían Qtum y VeChain durante uno de los ciclos más decisivos en la historia de esta clase de activos. La experiencia confirmó lo que el whitepaper había sugerido: esto no era una curiosidad pasajera, sino un cambio estructural.",
     "p5": "El nombre del fondo proviene de una visión en 2019, en la que aparecieron tres símbolos: 2ØY. El dos representa la dualidad. La Ø representa el conjunto vacío — el origen matemático, el vacío del que emerge la estructura. La Y encarna la curiosidad y la lógica ramificada de la indagación. Esa imagen se convirtió en el principio organizador de todo lo que vino después.",
-    "p6": "Las matemáticas y la música siguen siendo sus dos marcos de referencia. Ambas imponen orden sobre la imprevisibilidad. Ambas recompensan la paciencia y la precisión. Es la misma disposición que aplica a la inversión en activos digitales a largo plazo: la convicción de que la comprensión precede a la asignación, que el tiempo es un activo y que la disciplina — no la velocidad — es la ventaja sostenible."
+    "p6": "Las matemáticas y la música siguen siendo sus dos marcos de referencia. Ambas imponen orden sobre la imprevisibilidad. Ambas recompensan la paciencia y la precisión. Es la misma disposición que aplica a la gestión de activos digitales a largo plazo: la convicción de que la comprensión precede a la asignación, que el tiempo es un activo y que la disciplina — no la velocidad — es la ventaja sostenible."
   },
   "research": {
     "title": "Investigación y Análisis",
@@ -56,16 +71,16 @@
     "noArticles": "Aún no hay investigaciones publicadas. Vuelve pronto."
   },
   "dashboard": {
-    "title": "Panel del Inversor",
+    "title": "Panel del Miembro",
     "investorInfo": {
-      "heading": "Información del Inversor",
+      "heading": "Información del Miembro",
       "name": "Nombre Completo",
       "email": "Correo Electrónico"
     },
     "investmentSummary": {
-      "heading": "Resumen de Inversión",
-      "amount": "Monto de Inversión",
-      "investmentDate": "Fecha de Inversión",
+      "heading": "Resumen de Depósito",
+      "amount": "Monto de Depósito",
+      "investmentDate": "Fecha de Depósito",
       "liquidationDate": "Fecha de Liquidación",
       "lockRemaining": "Período de Bloqueo Restante",
       "status": "Estado"
@@ -77,11 +92,11 @@
     "documents": {
       "heading": "Documentos"
     },
-    "notFound": "Registro de inversor no encontrado."
+    "notFound": "Registro de miembro no encontrado."
   },
   "auth": {
     "login": {
-      "title": "Acceso de Inversores",
+      "title": "Acceso de Miembroes",
       "email": "Correo Electrónico",
       "password": "Contraseña",
       "submit": "Iniciar Sesión",
@@ -92,7 +107,7 @@
     },
     "resetPassword": {
       "title": "Establece Tu Contraseña",
-      "subtitle": "Establece una contraseña para tu cuenta de inversor.",
+      "subtitle": "Establece una contraseña para tu cuenta de miembro.",
       "password": "Nueva Contraseña",
       "confirm": "Confirmar Contraseña",
       "submit": "Establecer Contraseña",
@@ -103,7 +118,7 @@
     },
     "acceptInvite": {
       "title": "Crea Tu Contraseña",
-      "subtitle": "Establece una contraseña para tu cuenta de inversor.",
+      "subtitle": "Establece una contraseña para tu cuenta de miembro.",
       "password": "Nueva Contraseña",
       "confirm": "Confirmar Contraseña",
       "submit": "Establecer Contraseña",
@@ -114,7 +129,7 @@
     }
   },
   "footer": {
-    "confidential": "Confidencial — Solo para Inversores Acreditados",
+    "confidential": "Confidencial — Solo para Miembroes Acreditados",
     "colNavigate": "Navegar",
     "colConnect": "Contacto",
     "colSubscribe": "Suscribirse",

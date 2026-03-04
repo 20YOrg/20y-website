@@ -19,7 +19,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: '2ØY Fund',
-  description: 'A twenty-year horizon in digital asset investment.',
+  description: 'A twenty-year horizon in digital asset management.',
 }
 
 export default function RootLayout({

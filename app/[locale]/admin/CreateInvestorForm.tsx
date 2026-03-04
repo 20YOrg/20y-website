@@ -74,7 +74,7 @@ export default function CreateInvestorForm() {
         setErrorMsg(
           data.error === 'missing' ? 'Please fill in all required fields.' :
           data.error === 'user_failed' ? 'Failed to create user account. The email may already be registered.' :
-          data.error === 'investor_failed' ? `Investor save failed: ${JSON.stringify(data.details)}` :
+          data.error === 'investor_failed' ? `Member save failed: ${JSON.stringify(data.details)}` :
           'Something went wrong. Please try again.'
         )
         setSubmitStatus('error')
@@ -88,10 +88,10 @@ export default function CreateInvestorForm() {
   return (
     <div className="mx-auto px-5 md:px-8 py-14 md:py-24" style={{ maxWidth: 520 }}>
       <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 32, fontWeight: 400, color: '#1a1a1a', marginBottom: 8 }}>
-        Add Investor
+        Add Member
       </h1>
       <p style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: '#7a7a7a', marginBottom: 40, lineHeight: 1.6 }}>
-        Creates the investor account, saves their data, and sends a setup email — all at once.
+        Creates the member account, saves their data, and sends a setup email — all at once.
       </p>
 
       {submitStatus === 'success' && (
@@ -112,7 +112,7 @@ export default function CreateInvestorForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label style={labelStyle}>Investment Amount *</label>
+          <label style={labelStyle}>Deposit Amount *</label>
           <div className="flex gap-2">
             <input
               id="investment_amount"
@@ -145,7 +145,7 @@ export default function CreateInvestorForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="investment_date" style={labelStyle}>Investment Date *</label>
+          <label htmlFor="investment_date" style={labelStyle}>Deposit Date *</label>
           <input id="investment_date" name="investment_date" type="date" value={form.investment_date} onChange={handleChange} required style={inputStyle} />
         </div>
 

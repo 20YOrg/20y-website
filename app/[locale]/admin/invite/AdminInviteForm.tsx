@@ -45,7 +45,7 @@ export default function AdminInviteForm() {
           marginBottom: 8,
         }}
       >
-        Invite Investor
+        Invite Member
       </h1>
       <p
         style={{
@@ -56,7 +56,7 @@ export default function AdminInviteForm() {
           lineHeight: 1.6,
         }}
       >
-        First create the investor's account in Directus, then send them a setup email here.
+        First create the member's account in Directus, then send them a setup email here.
       </p>
 
       {status === 'success' && (
@@ -86,7 +86,7 @@ export default function AdminInviteForm() {
               letterSpacing: '0.05em',
             }}
           >
-            Investor Email
+            Member Email
           </label>
           <input
             id="email"
@@ -94,7 +94,7 @@ export default function AdminInviteForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            placeholder="investor@example.com"
+            placeholder="member@example.com"
             style={{
               fontFamily: 'var(--font-sans)',
               fontSize: 15,
@@ -109,7 +109,7 @@ export default function AdminInviteForm() {
 
         {status === 'error' && (
           <p style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: '#b00' }}>
-            Failed to send email. Make sure the investor account exists in Directus first.
+            Failed to send email. Make sure the member account exists in Directus first.
           </p>
         )}
 

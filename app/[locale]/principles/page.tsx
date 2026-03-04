@@ -26,12 +26,39 @@ function PrinciplesContent() {
           fontSize: 'clamp(28px, 5vw, 40px)',
           fontWeight: 400,
           color: '#1a1a1a',
-          marginBottom: 40,
+          marginBottom: 16,
           lineHeight: 1.2,
         }}
       >
         {t('title')}
       </h1>
+
+      <p
+        style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: 16,
+          fontStyle: 'italic',
+          fontWeight: 700,
+          color: '#1C4A60',
+          lineHeight: 1.75,
+          marginBottom: 12,
+          maxWidth: 680,
+        }}
+      >
+        {t('tagline')}
+      </p>
+      <p
+        style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: 16,
+          color: '#4a4a4a',
+          lineHeight: 1.75,
+          marginBottom: 48,
+          maxWidth: 680,
+        }}
+      >
+        {t('subtitle')}
+      </p>
 
       <div>
         {cards.map(({ key }, i) => (

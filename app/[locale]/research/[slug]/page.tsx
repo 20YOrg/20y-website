@@ -19,7 +19,7 @@ export default async function ResearchDetailPage({
 
   return (
     <div
-      className="mx-auto px-8 py-24"
+      className="mx-auto px-5 md:px-8 py-14 md:py-24"
       style={{ maxWidth: 800 }}
     >
       <Link
