@@ -138,7 +138,7 @@ export default async function HomePage() {
 
             {/* Text */}
             {[t('mission1'), t('mission2')].map((para, i) => (
-              <p key={i} style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(16px, 1.8vw, 20px)', lineHeight: 1.9, color: '#4a4a4a', fontWeight: locale === 'zh' ? 400 : 600, textIndent: '2em', color: '#1a1a1a', marginBottom: i === 0 ? 24 : 0 }}>
+              <p key={i} style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(16px, 1.8vw, 20px)', lineHeight: 1.9, color: '#1a1a1a', fontWeight: locale === 'zh' ? 400 : 600, textIndent: '2em', marginBottom: i === 0 ? 24 : 0 }}>
                 {para}
               </p>
             ))}
