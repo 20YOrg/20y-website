@@ -7,7 +7,7 @@ export default async function HomePage() {
   const t = await getTranslations('home')
 
   return (
-    <div className="mx-auto px-5 md:px-8 pt-14 md:pt-24 pb-14 md:pb-24" style={{ maxWidth: 800 }}>
+    <div className="mx-auto px-5 md:px-8 pt-14 md:pt-24 pb-14 md:pb-24" style={{ maxWidth: 960 }}>
 
       {/* Hero */}
       <div style={{ paddingBottom: 32 }}>

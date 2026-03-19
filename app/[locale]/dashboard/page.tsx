@@ -26,7 +26,7 @@ export default async function DashboardPage() {
   return (
     <div
       className="mx-auto px-5 md:px-8 py-14 md:py-24"
-      style={{ maxWidth: 800 }}
+      style={{ maxWidth: 960 }}
     >
       <h1
         style={{
