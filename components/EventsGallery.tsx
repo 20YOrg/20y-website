@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
 
 const photos = [
   '/events/top1.png',
@@ -25,8 +26,24 @@ const photos = [
 const track = [...photos, ...photos]
 
 export default function EventsGallery() {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div style={{ overflow: 'hidden' }}>
+    <div ref={ref} style={{ overflow: 'hidden', position: 'relative' }}>
+      <div style={{
+        position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none',
+        background: 'linear-gradient(to right, #ffffff 0%, transparent 8%, transparent 92%, #ffffff 100%)',
+      }} />
       <style>{`
         @keyframes gallery-scroll {
           0%   { transform: translateX(0); }
@@ -36,7 +53,7 @@ export default function EventsGallery() {
           display: flex;
           gap: 10px;
           width: max-content;
-          animation: gallery-scroll 80s linear infinite;
+          animation: gallery-scroll 120s linear infinite;
         }
         .gallery-track:hover {
           animation-play-state: paused;
@@ -64,7 +81,7 @@ export default function EventsGallery() {
           }
         }
       `}</style>
-      <div className="gallery-track">
+      <div className="gallery-track" style={{ animationPlayState: visible ? 'running' : 'paused' }}>
         {track.map((src, i) => (
           <div key={i} className="gallery-item">
             <Image

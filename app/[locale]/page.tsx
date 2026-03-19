@@ -16,12 +16,11 @@ export default async function HomePage() {
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(36px, 4.5vw, 48px)',
+              fontSize: 'clamp(28px, 4.5vw, 48px)',
               fontWeight: 400,
               color: '#1a1a1a',
               lineHeight: 1.1,
               marginBottom: 20,
-              whiteSpace: 'nowrap',
             }}
           >
             {t('headline')}
