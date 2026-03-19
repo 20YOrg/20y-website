@@ -32,7 +32,7 @@ export default function EventsGallery() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setVisible(entry.isIntersecting),
-      { threshold: 0.1 }
+      { threshold: 1.0 }
     )
     if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
