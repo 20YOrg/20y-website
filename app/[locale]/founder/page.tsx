@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl'
-import Image from 'next/image'
+import FadeImage from '@/components/FadeImage'
 
 export default function FounderPage() {
   return <FounderContent />
@@ -29,20 +29,23 @@ function FounderContent() {
       </h1>
 
       {/* Full-width photo within content column */}
-      <Image
-        src="/ibai-basabe.jpg"
-        alt="Ibai Basabe"
-        width={800}
-        height={480}
+      <div
         style={{
+          position: 'relative',
           width: '100%',
           height: 'clamp(200px, 30vw, 340px)',
-          objectFit: 'cover',
-          objectPosition: 'center 70%',
-          display: 'block',
           marginBottom: 28,
+          overflow: 'hidden',
+          backgroundColor: '#f0f0f0',
         }}
-      />
+      >
+        <FadeImage
+          src="/ibai-basabe.jpg"
+          alt="Ibai Basabe"
+          sizes="(max-width: 960px) 100vw, 960px"
+          objectPosition="center 70%"
+        />
+      </div>
 
       {/* Name + social buttons */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>

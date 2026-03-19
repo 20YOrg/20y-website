@@ -1,11 +1,117 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { usePathname, useRouter, Link } from '@/navigation'
 import UserMenu from './UserMenu'
 
-const LOCALES = ['en', 'es', 'zh'] as const
+const LOCALES = [
+  { code: 'en', label: 'English' },
+  { code: 'es', label: 'Español' },
+  { code: 'zh', label: '简体中文' },
+] as const
+
+function GlobeIcon() {
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  )
+}
+
+function LangDropdown({ onClose }: { onClose?: () => void }) {
+  const locale = useLocale()
+  const pathname = usePathname()
+  const router = useRouter()
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  function switchLocale(newLocale: string) {
+    router.push(pathname, { locale: newLocale })
+    setOpen(false)
+    onClose?.()
+  }
+
+  const current = LOCALES.find((l) => l.code === locale)
+
+  return (
+    <div ref={ref} style={{ position: 'relative' }}>
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="flex items-center gap-1.5 hover:!text-[#1C4A60] transition-colors"
+        style={{
+          fontFamily: 'var(--font-sans)',
+          fontSize: 12,
+          fontWeight: 500,
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: 0,
+          color: '#1a1a1a',
+          letterSpacing: '0.02em',
+        }}
+      >
+        <GlobeIcon />
+        {current?.label}
+      </button>
+
+      {open && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 28,
+            right: 0,
+            backgroundColor: '#ffffff',
+            border: '1px solid #e5e5e5',
+            minWidth: 120,
+            zIndex: 200,
+            animation: 'langDropdown 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
+          <style>{`
+            @keyframes langDropdown {
+              from { opacity: 0; transform: translateY(-6px); }
+              to   { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
+          {LOCALES.map(({ code, label }) => (
+            <button
+              key={code}
+              onClick={() => switchLocale(code)}
+              style={{
+                display: 'block',
+                width: '100%',
+                textAlign: 'left',
+                padding: '9px 14px',
+                fontFamily: 'var(--font-sans)',
+                fontSize: 13,
+                fontWeight: code === locale ? 600 : 400,
+                color: code === locale ? '#1a1a1a' : '#7a7a7a',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+              }}
+              className="hover:bg-gray-50 hover:!text-[#1C4A60] transition-colors"
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 export default function Navigation() {
   const t = useTranslations('nav')
@@ -16,7 +122,6 @@ export default function Navigation() {
 
   function switchLocale(newLocale: string) {
     router.push(pathname, { locale: newLocale })
-    setOpen(false)
   }
 
   const navLinks = [
@@ -32,7 +137,7 @@ export default function Navigation() {
         className="mx-auto flex items-center justify-between px-5 md:px-8"
         style={{ maxWidth: 1200, height: 64 }}
       >
-        {/* Logo — no hover effect */}
+        {/* Logo */}
         <Link
           href="/"
           style={{
@@ -68,34 +173,11 @@ export default function Navigation() {
 
         {/* Desktop right */}
         <div className="hidden md:flex items-center gap-6">
-          <div className="flex items-center gap-2">
-            {LOCALES.map((loc, i) => (
-              <span key={loc} className="flex items-center gap-2">
-                {i > 0 && <span style={{ color: '#e5e5e5', fontSize: 12 }}>|</span>}
-                <button
-                  onClick={() => switchLocale(loc)}
-                  className={`hover:text-[#1C4A60] transition-colors ${locale === loc ? 'text-[#1a1a1a]' : 'text-[#7a7a7a]'}`}
-                  style={{
-                    fontFamily: 'var(--font-sans)',
-                    fontSize: 12,
-                    fontWeight: locale === loc ? 500 : 400,
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer',
-                    padding: 0,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.05em',
-                  }}
-                >
-                  {loc}
-                </button>
-              </span>
-            ))}
-          </div>
+          <LangDropdown />
           <UserMenu locale={locale} />
         </div>
 
-        {/* Mobile hamburger — icon crossfades between ☰ and ✕ */}
+        {/* Mobile hamburger */}
         <button
           className="flex md:hidden items-center justify-center hover:opacity-60 transition-opacity"
           onClick={() => setOpen((o) => !o)}
@@ -137,7 +219,7 @@ export default function Navigation() {
         </button>
       </nav>
 
-      {/* Mobile dropdown — floats over page content */}
+      {/* Mobile dropdown */}
       {open && (
         <div
           className="flex flex-col md:hidden"
@@ -179,25 +261,23 @@ export default function Navigation() {
             style={{ padding: '14px 20px' }}
           >
             <div className="flex items-center gap-3">
-              {LOCALES.map((loc, i) => (
-                <span key={loc} className="flex items-center gap-3">
+              {LOCALES.map(({ code, label }, i) => (
+                <span key={code} className="flex items-center gap-3">
                   {i > 0 && <span style={{ color: '#e5e5e5', fontSize: 12 }}>|</span>}
                   <button
-                    onClick={() => switchLocale(loc)}
-                    className={`hover:text-[#1C4A60] transition-colors ${locale === loc ? 'text-[#1a1a1a]' : 'text-[#7a7a7a]'}`}
+                    onClick={() => { switchLocale(code); setOpen(false) }}
+                    className={`hover:text-[#1C4A60] transition-colors ${locale === code ? 'text-[#1a1a1a]' : 'text-[#7a7a7a]'}`}
                     style={{
                       fontFamily: 'var(--font-sans)',
                       fontSize: 13,
-                      fontWeight: locale === loc ? 500 : 400,
+                      fontWeight: locale === code ? 500 : 400,
                       background: 'none',
                       border: 'none',
                       cursor: 'pointer',
                       padding: 0,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
                     }}
                   >
-                    {loc}
+                    {label}
                   </button>
                 </span>
               ))}
