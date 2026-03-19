@@ -140,6 +140,7 @@ export default function Navigation() {
         {/* Logo */}
         <Link
           href="/"
+          onClick={() => setOpen(false)}
           style={{
             fontFamily: 'var(--font-serif)',
             fontSize: 20,
