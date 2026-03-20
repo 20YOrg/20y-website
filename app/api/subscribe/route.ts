@@ -29,17 +29,17 @@ export async function POST(req: NextRequest) {
     {
       to: 'ibai@20y.org',
       subject: 'New Newsletter Subscriber',
-      body: `A new subscriber just signed up: ${email}`,
+      html: `<p>A new subscriber just signed up: <strong>${email}</strong></p>`,
     },
     {
       to: 'rebekah@20y.org',
       subject: 'New Newsletter Subscriber',
-      body: `A new subscriber just signed up: ${email}`,
+      html: `<p>A new subscriber just signed up: <strong>${email}</strong></p>`,
     },
     {
       to: email,
       subject: "You're subscribed to 2ØY Fund",
-      body: `Thank you for subscribing to the 2ØY Fund newsletter.\n\nYou'll receive our fund reports and structured insights on market cycles — thoughtful, infrequent, and worth reading.\n\n— The 2ØY Team`,
+      html: `<p>Thank you for subscribing to the 2ØY Fund newsletter.</p><p>You'll receive our fund reports and structured insights on market cycles — thoughtful, infrequent, and worth reading.</p><p>— The 2ØY Team</p>`,
     },
   ]
   for (const mail of notifications) {
