@@ -24,5 +24,31 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'failed' }, { status: 400 })
   }
 
+  // Send emails (fire and forget)
+  const notifications = [
+    {
+      to: 'ibai@20y.org',
+      subject: 'New Newsletter Subscriber',
+      body: `A new subscriber just signed up: ${email}`,
+    },
+    {
+      to: 'rebekah@20y.org',
+      subject: 'New Newsletter Subscriber',
+      body: `A new subscriber just signed up: ${email}`,
+    },
+    {
+      to: email,
+      subject: "You're subscribed to 2ØY Fund",
+      body: `Thank you for subscribing to the 2ØY Fund newsletter.\n\nYou'll receive our fund reports and structured insights on market cycles — thoughtful, infrequent, and worth reading.\n\n— The 2ØY Team`,
+    },
+  ]
+  for (const mail of notifications) {
+    fetch(`${BASE}/utils/mail`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${TOKEN}` },
+      body: JSON.stringify(mail),
+    }).catch(() => {})
+  }
+
   return NextResponse.json({ ok: true })
 }
