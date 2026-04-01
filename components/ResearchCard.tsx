@@ -9,8 +9,25 @@ interface ResearchCardProps {
   locale: string
 }
 
+function stripAndDecode(html: string): string {
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&mdash;/g, '—')
+    .replace(/&ndash;/g, '–')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&hellip;/g, '…')
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(parseInt(code)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, code) => String.fromCharCode(parseInt(code, 16)))
+}
+
 export default function ResearchCard({ post, locale }: ResearchCardProps) {
-  const plainSummary = post.executive_summary.replace(/<[^>]*>/g, '')
+  const plainSummary = stripAndDecode(post.executive_summary)
+  const limit = locale === 'zh' ? 80 : 180
   const imageUrl = getAssetUrl(post.framework_image)
 
   return (
@@ -79,7 +96,7 @@ export default function ResearchCard({ post, locale }: ResearchCardProps) {
               lineHeight: 1.65,
             }}
           >
-            {plainSummary.length > 180 ? plainSummary.slice(0, 180) + '…' : plainSummary}
+            {plainSummary.length > limit ? plainSummary.slice(0, limit) + '…' : plainSummary}
           </p>
         </div>
       </div>
