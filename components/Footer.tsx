@@ -85,7 +85,7 @@ export default function Footer() {
               maxWidth: 200,
             }}
           >
-            A twenty-year horizon in digital asset management.
+            {t('tagline')}
           </p>
         </div>
 

@@ -1,3 +1,4 @@
+import { decode } from 'html-entities'
 import FadeImage from './FadeImage'
 import { Link } from '@/navigation'
 import { formatDate } from '@/lib/utils'
@@ -10,19 +11,7 @@ interface ResearchCardProps {
 }
 
 function stripAndDecode(html: string): string {
-  return html
-    .replace(/<[^>]*>/g, '')
-    .replace(/&mdash;/g, '—')
-    .replace(/&ndash;/g, '–')
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&hellip;/g, '…')
-    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(parseInt(code)))
-    .replace(/&#x([0-9a-fA-F]+);/g, (_, code) => String.fromCharCode(parseInt(code, 16)))
+  return decode(html.replace(/<[^>]*>/g, ''))
 }
 
 export default function ResearchCard({ post, locale }: ResearchCardProps) {
