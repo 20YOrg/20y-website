@@ -5,7 +5,7 @@ import ResearchCard from '@/components/ResearchCard'
 export default async function ResearchPage() {
   const t = await getTranslations('research')
   const locale = await getLocale()
-  const posts = await getPublishedResearchPosts()
+  const posts = await getPublishedResearchPosts(locale)
 
   return (
     <div

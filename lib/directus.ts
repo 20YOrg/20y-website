@@ -17,6 +17,26 @@ export interface ResearchPost {
   status: 'published' | 'draft'
 }
 
+interface ResearchPostRaw extends ResearchPost {
+  title_es?: string
+  title_zh?: string
+  executive_summary_es?: string
+  executive_summary_zh?: string
+}
+
+function localizePost(post: ResearchPostRaw, locale: string): ResearchPost {
+  const title =
+    (locale === 'es' && post.title_es) ||
+    (locale === 'zh' && post.title_zh) ||
+    post.title
+  const executive_summary =
+    (locale === 'es' && post.executive_summary_es) ||
+    (locale === 'zh' && post.executive_summary_zh) ||
+    post.executive_summary
+  const { title_es, title_zh, executive_summary_es, executive_summary_zh, ...rest } = post
+  return { ...rest, title, executive_summary }
+}
+
 export interface Investor {
   id: string
   email: string
@@ -28,7 +48,7 @@ export interface Investor {
   status: 'active' | 'pending' | 'closed'
 }
 
-export async function getPublishedResearchPosts(): Promise<ResearchPost[]> {
+export async function getPublishedResearchPosts(locale = 'en'): Promise<ResearchPost[]> {
   if (!BASE) return []
   try {
     const res = await fetch(
@@ -40,13 +60,14 @@ export async function getPublishedResearchPosts(): Promise<ResearchPost[]> {
     )
     if (!res.ok) return []
     const json = await res.json()
-    return json.data ?? []
+    const posts: ResearchPostRaw[] = json.data ?? []
+    return posts.map((p) => localizePost(p, locale))
   } catch {
     return []
   }
 }
 
-export async function getResearchPostBySlug(slug: string): Promise<ResearchPost | null> {
+export async function getResearchPostBySlug(slug: string, locale = 'en'): Promise<ResearchPost | null> {
   if (!BASE) return null
   try {
     const res = await fetch(
@@ -58,7 +79,8 @@ export async function getResearchPostBySlug(slug: string): Promise<ResearchPost 
     )
     if (!res.ok) return null
     const json = await res.json()
-    return json.data?.[0] ?? null
+    const post: ResearchPostRaw | undefined = json.data?.[0]
+    return post ? localizePost(post, locale) : null
   } catch {
     return null
   }

@@ -13,7 +13,7 @@ export default async function ResearchDetailPage({
   const { slug } = await params
   const t = await getTranslations('research')
   const locale = await getLocale()
-  const post = await getResearchPostBySlug(slug)
+  const post = await getResearchPostBySlug(slug, locale)
 
   if (!post) notFound()
 
