@@ -57,11 +57,27 @@ export default async function ResearchDetailPage({
           fontWeight: 400,
           color: '#1a1a1a',
           lineHeight: 1.2,
-          marginBottom: 32,
+          marginBottom: post.subtitle ? 12 : 32,
         }}
       >
         {post.title}
       </h1>
+
+      {post.subtitle && (
+        <p
+          style={{
+            fontFamily: 'var(--font-serif)',
+            fontSize: 20,
+            fontWeight: 300,
+            fontStyle: 'italic',
+            color: '#7a7a7a',
+            lineHeight: 1.4,
+            marginBottom: 32,
+          }}
+        >
+          {post.subtitle}
+        </p>
+      )}
 
       {post.video_url && (
         <div

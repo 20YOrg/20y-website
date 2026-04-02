@@ -10,6 +10,7 @@ export interface ResearchPost {
   id: string
   slug: string
   title: string
+  subtitle?: string
   publish_date: string
   executive_summary: string
   video_url?: string
@@ -20,6 +21,8 @@ export interface ResearchPost {
 interface ResearchPostRaw extends ResearchPost {
   title_es?: string
   title_zh?: string
+  subtitle_es?: string
+  subtitle_zh?: string
   executive_summary_es?: string
   executive_summary_zh?: string
 }
@@ -29,12 +32,16 @@ function localizePost(post: ResearchPostRaw, locale: string): ResearchPost {
     (locale === 'es' && post.title_es) ||
     (locale === 'zh' && post.title_zh) ||
     post.title
+  const subtitle =
+    (locale === 'es' && post.subtitle_es) ||
+    (locale === 'zh' && post.subtitle_zh) ||
+    post.subtitle
   const executive_summary =
     (locale === 'es' && post.executive_summary_es) ||
     (locale === 'zh' && post.executive_summary_zh) ||
     post.executive_summary
-  const { title_es, title_zh, executive_summary_es, executive_summary_zh, ...rest } = post
-  return { ...rest, title, executive_summary }
+  const { title_es, title_zh, subtitle_es, subtitle_zh, executive_summary_es, executive_summary_zh, ...rest } = post
+  return { ...rest, title, subtitle: subtitle || undefined, executive_summary }
 }
 
 export interface Investor {
