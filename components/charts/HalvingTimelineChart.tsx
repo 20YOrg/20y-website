@@ -177,6 +177,8 @@ export default function HalvingTimelineChart() {
           plugins: {
             legend: { display: false },
             tooltip: {
+              mode: 'nearest',
+              intersect: false,
               callbacks: {
                 title: (ctx) => {
                   const v = ctx[0].parsed.x ?? 0

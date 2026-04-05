@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 
 function ChartPlaceholder() {
@@ -47,6 +47,9 @@ function parseSegments(html: string): Array<{ type: 'html'; content: string } | 
 
 export default function ProseContent({ html }: { html: string }) {
   const ref = useRef<HTMLDivElement>(null)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
     if (!ref.current) return
@@ -92,6 +95,7 @@ export default function ProseContent({ html }: { html: string }) {
             ? <div key={i} dangerouslySetInnerHTML={{ __html: seg.content }} />
             : null
         }
+        if (!mounted) return <ChartPlaceholder key={i} />
         const ChartComponent = CHART_COMPONENTS[seg.id]
         if (!ChartComponent) return null
         return <ChartComponent key={i} />
