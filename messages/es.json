@@ -72,6 +72,16 @@
   },
   "dashboard": {
     "title": "Panel del Miembro",
+    "nav": {
+      "dashboard": "Panel",
+      "marketReports": "Informes de Mercado",
+      "logout": "Cerrar Sesión"
+    },
+    "marketReports": {
+      "title": "Informes de Mercado",
+      "intro": "Informes de mercado exclusivos para miembros de 2ØY, enviados directamente a su correo.",
+      "empty": "Aún no hay informes publicados. Consulte su correo para las últimas actualizaciones."
+    },
     "investorInfo": {
       "heading": "Información del Miembro",
       "name": "Nombre Completo",

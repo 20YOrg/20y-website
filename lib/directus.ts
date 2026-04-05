@@ -93,6 +93,53 @@ export async function getResearchPostBySlug(slug: string, locale = 'en'): Promis
   }
 }
 
+export interface MarketReport {
+  id: string
+  slug: string
+  title: string
+  date_published: string
+  summary: string
+  content: string
+  pdf_url?: string
+  status: 'published' | 'draft'
+}
+
+export async function getMarketReports(): Promise<MarketReport[]> {
+  if (!BASE || !TOKEN) return []
+  try {
+    const res = await fetch(
+      `${BASE}/items/market_reports?filter[status][_eq]=published&sort=-date_published`,
+      {
+        headers: { Authorization: `Bearer ${TOKEN}` },
+        cache: 'no-store',
+      }
+    )
+    if (!res.ok) return []
+    const json = await res.json()
+    return json.data ?? []
+  } catch {
+    return []
+  }
+}
+
+export async function getMarketReportBySlug(slug: string): Promise<MarketReport | null> {
+  if (!BASE || !TOKEN) return null
+  try {
+    const res = await fetch(
+      `${BASE}/items/market_reports?filter[slug][_eq]=${encodeURIComponent(slug)}&filter[status][_eq]=published&limit=1`,
+      {
+        headers: { Authorization: `Bearer ${TOKEN}` },
+        cache: 'no-store',
+      }
+    )
+    if (!res.ok) return null
+    const json = await res.json()
+    return json.data?.[0] ?? null
+  } catch {
+    return null
+  }
+}
+
 // Auth functions
 
 export async function loginUser(email: string, password: string) {

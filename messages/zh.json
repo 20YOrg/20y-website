@@ -72,6 +72,16 @@
   },
   "dashboard": {
     "title": "成员控制台",
+    "nav": {
+      "dashboard": "控制台",
+      "marketReports": "市场报告",
+      "logout": "退出登录"
+    },
+    "marketReports": {
+      "title": "市场报告",
+      "intro": "2ØY成员专属市场报告，直接发送至您的邮箱。",
+      "empty": "暂无已发布的报告。请查收邮件获取最新动态。"
+    },
     "investorInfo": {
       "heading": "成员信息",
       "name": "姓名",

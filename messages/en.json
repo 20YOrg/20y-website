@@ -72,7 +72,17 @@
   },
   "dashboard": {
     "title": "Member Dashboard",
-    "memberInfo": {
+    "nav": {
+      "dashboard": "Dashboard",
+      "marketReports": "Market Reports",
+      "logout": "Log Out"
+    },
+    "marketReports": {
+      "title": "Market Reports",
+      "intro": "Exclusive market reports for 2ØY members, delivered directly to your inbox.",
+      "empty": "No reports published yet. Check your email for the latest updates."
+    },
+    "investorInfo": {
       "heading": "Member Information",
       "name": "Full Name",
       "email": "Email Address"

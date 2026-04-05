@@ -37,8 +37,7 @@ function LoginForm() {
       })
 
       if (res.ok) {
-        router.push(localePath(locale, '/dashboard'))
-        router.refresh()
+        window.location.href = localePath(locale, '/dashboard')
       } else {
         const data = await res.json().catch(() => ({}))
         setError(data.error === 'server' ? 'server' : 'invalid')
