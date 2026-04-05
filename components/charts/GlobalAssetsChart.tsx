@@ -20,11 +20,11 @@ export default function GlobalAssetsChart() {
       }
 
       const assets = [
-        { label: 'Real estate',    value: 326.0, color: '#C8C8C8' },
-        { label: 'Bonds',          value: 133.0, color: '#C8C8C8' },
-        { label: 'Stock markets',  value: 109.0, color: '#C8C8C8' },
-        { label: 'Gold',           value: 21.0,  color: '#C8C8C8' },
-        { label: 'Crypto (total)', value: 2.7,   color: '#378ADD' },
+        { label: 'Global real estate',  value: 393.0, color: '#C8C8C8' },
+        { label: 'Global equities',     value: 152.0, color: '#C8C8C8' },
+        { label: 'Global debt markets', value: 143.0, color: '#C8C8C8' },
+        { label: 'Gold',                value: 33.0,  color: '#C8C8C8' },
+        { label: 'Crypto (total)',       value: 2.3,   color: '#378ADD' },
       ]
 
       chartRef.current = new Chart(canvasRef.current, {
@@ -110,7 +110,7 @@ export default function GlobalAssetsChart() {
         <canvas ref={canvasRef} />
       </div>
       <p style={{ fontSize: 11, color: '#888780', marginTop: 10, lineHeight: 1.5 }}>
-        Approximate figures in USD trillions. Crypto market cap as of early 2026. Real estate, bonds, and equities based on 2024 estimates. Log scale used for readability. Sources: Visual Capitalist, World Bank, SIFMA, CoinMarketCap.
+        Approximate figures in USD trillions. Global real estate $393T · Global equities $152T · Global debt markets $143T · Gold $33T · Crypto $2.3T. Log scale used for readability. Sources: Visual Capitalist, World Bank, SIFMA, CoinMarketCap.
       </p>
     </div>
   )

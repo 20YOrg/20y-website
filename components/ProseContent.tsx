@@ -82,17 +82,18 @@ export default function ProseContent({ html }: { html: string }) {
         ref={ref}
         className="prose-content"
         style={sharedStyle}
+        suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: html }}
       />
     )
   }
 
   return (
-    <div ref={ref} className="prose-content" style={sharedStyle}>
+    <div ref={ref} className="prose-content" style={sharedStyle} suppressHydrationWarning>
       {segments.map((seg, i) => {
         if (seg.type === 'html') {
           return seg.content.trim()
-            ? <div key={i} dangerouslySetInnerHTML={{ __html: seg.content }} />
+            ? <div key={i} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: seg.content }} />
             : null
         }
         if (!mounted) return <ChartPlaceholder key={i} />
