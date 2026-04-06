@@ -3,6 +3,7 @@ import { getLocale } from 'next-intl/server'
 import { Link } from '@/navigation'
 import { getMarketReportBySlug } from '@/lib/directus'
 import { formatDate } from '@/lib/utils'
+import ReportContent from '@/components/ReportContent'
 
 export default async function MarketReportDetailPage({
   params,
@@ -107,12 +108,7 @@ export default async function MarketReportDetailPage({
         )}
 
         {/* Body content */}
-        {report.content && (
-          <div
-            className="report-content"
-            dangerouslySetInnerHTML={{ __html: report.content }}
-          />
-        )}
+        {report.content && <ReportContent html={report.content} />}
       </div>
 
       <style>{`
