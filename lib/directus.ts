@@ -100,11 +100,36 @@ export interface MarketReport {
   date_published: string
   summary: string
   content: string
-  pdf_url?: string
   status: 'published' | 'draft'
 }
 
-export async function getMarketReports(): Promise<MarketReport[]> {
+interface MarketReportRaw extends MarketReport {
+  title_es?: string
+  title_zh?: string
+  summary_es?: string
+  summary_zh?: string
+  content_es?: string
+  content_zh?: string
+}
+
+function localizeMarketReport(report: MarketReportRaw, locale: string): MarketReport {
+  const title =
+    (locale === 'es' && report.title_es) ||
+    (locale === 'zh' && report.title_zh) ||
+    report.title
+  const summary =
+    (locale === 'es' && report.summary_es) ||
+    (locale === 'zh' && report.summary_zh) ||
+    report.summary
+  const content =
+    (locale === 'es' && report.content_es) ||
+    (locale === 'zh' && report.content_zh) ||
+    report.content
+  const { title_es, title_zh, summary_es, summary_zh, content_es, content_zh, ...rest } = report
+  return { ...rest, title, summary, content }
+}
+
+export async function getMarketReports(locale = 'en'): Promise<MarketReport[]> {
   if (!BASE || !TOKEN) return []
   try {
     const res = await fetch(
@@ -116,13 +141,14 @@ export async function getMarketReports(): Promise<MarketReport[]> {
     )
     if (!res.ok) return []
     const json = await res.json()
-    return json.data ?? []
+    const reports: MarketReportRaw[] = json.data ?? []
+    return reports.map((r) => localizeMarketReport(r, locale))
   } catch {
     return []
   }
 }
 
-export async function getMarketReportBySlug(slug: string): Promise<MarketReport | null> {
+export async function getMarketReportBySlug(slug: string, locale = 'en'): Promise<MarketReport | null> {
   if (!BASE || !TOKEN) return null
   try {
     const res = await fetch(
@@ -134,7 +160,8 @@ export async function getMarketReportBySlug(slug: string): Promise<MarketReport 
     )
     if (!res.ok) return null
     const json = await res.json()
-    return json.data?.[0] ?? null
+    const report: MarketReportRaw | undefined = json.data?.[0]
+    return report ? localizeMarketReport(report, locale) : null
   } catch {
     return null
   }

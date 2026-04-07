@@ -80,7 +80,8 @@
     "marketReports": {
       "title": "Market Reports",
       "intro": "Exclusive market reports for 2ØY members, delivered directly to your inbox.",
-      "empty": "No reports published yet. Check your email for the latest updates."
+      "empty": "No reports published yet. Check your email for the latest updates.",
+      "membersOnly": "Members Only"
     },
     "investorInfo": {
       "heading": "Member Information",

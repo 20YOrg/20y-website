@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { getLocale } from 'next-intl/server'
+import { getLocale, getTranslations } from 'next-intl/server'
 import { Link } from '@/navigation'
 import { getMarketReportBySlug } from '@/lib/directus'
 import { formatDate } from '@/lib/utils'
@@ -12,7 +12,8 @@ export default async function MarketReportDetailPage({
 }) {
   const { slug } = await params
   const locale = await getLocale()
-  const report = await getMarketReportBySlug(slug)
+  const t = await getTranslations('dashboard.marketReports')
+  const report = await getMarketReportBySlug(slug, locale)
 
   if (!report) notFound()
 
@@ -43,7 +44,7 @@ export default async function MarketReportDetailPage({
           strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M19 12H5M12 19l-7-7 7-7" />
         </svg>
-        Market Reports
+        {t('title')}
       </Link>
 
         {/* Date */}
@@ -75,39 +76,7 @@ export default async function MarketReportDetailPage({
         {/* Divider */}
         <hr style={{ border: 'none', borderTop: '1px solid #e8e8e8', marginBottom: 36 }} />
 
-        {/* PDF download */}
-        {report.pdf_url && (
-          <a
-            href={report.pdf_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 8,
-              fontFamily: 'var(--font-sans)',
-              fontSize: 12,
-              fontWeight: 500,
-              color: '#1a1a1a',
-              border: '1px solid #1a1a1a',
-              padding: '8px 16px',
-              textDecoration: 'none',
-              marginBottom: 40,
-              letterSpacing: '0.03em',
-            }}
-            className="hover:bg-black hover:text-white transition-colors"
-          >
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7,10 12,15 17,10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            Download PDF
-          </a>
-        )}
-
-        {/* Body content */}
+{/* Body content */}
         {report.content && <ReportContent html={report.content} />}
       </div>
 

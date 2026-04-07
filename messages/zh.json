@@ -80,7 +80,8 @@
     "marketReports": {
       "title": "市场报告",
       "intro": "2ØY成员专属市场报告，直接发送至您的邮箱。",
-      "empty": "暂无已发布的报告。请查收邮件获取最新动态。"
+      "empty": "暂无已发布的报告。请查收邮件获取最新动态。",
+      "membersOnly": "仅限成员"
     },
     "investorInfo": {
       "heading": "成员信息",

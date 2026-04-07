@@ -16,7 +16,7 @@ function EnvelopeIcon() {
 export default async function MarketReportsPage() {
   const t = await getTranslations('dashboard.marketReports')
   const locale = await getLocale()
-  const reports = await getMarketReports()
+  const reports = await getMarketReports(locale)
 
   return (
     <div style={{ padding: '40px 0 72px' }}>
@@ -32,7 +32,7 @@ export default async function MarketReportsPage() {
           letterSpacing: '0.12em',
           marginBottom: 10,
         }}>
-          Members Only
+          {t('membersOnly')}
         </p>
         <h1 style={{
           fontFamily: 'var(--font-serif)',

@@ -80,7 +80,8 @@
     "marketReports": {
       "title": "Informes de Mercado",
       "intro": "Informes de mercado exclusivos para miembros de 2ØY, enviados directamente a su correo.",
-      "empty": "Aún no hay informes publicados. Consulte su correo para las últimas actualizaciones."
+      "empty": "Aún no hay informes publicados. Consulte su correo para las últimas actualizaciones.",
+      "membersOnly": "Solo Miembros"
     },
     "investorInfo": {
       "heading": "Información del Miembro",
