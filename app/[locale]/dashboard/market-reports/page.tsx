@@ -19,7 +19,7 @@ export default async function MarketReportsPage() {
   const reports = await getMarketReports(locale)
 
   return (
-    <div style={{ padding: '40px 0 72px' }}>
+    <div className="py-6 md:py-10 pb-16 md:pb-[72px]">
 
       {/* Header */}
       <div style={{ marginBottom: 12 }}>
@@ -73,7 +73,7 @@ export default async function MarketReportsPage() {
           <p style={{
             fontFamily: 'var(--font-sans)',
             fontSize: 13,
-            color: '#999999',
+            color: '#bbbbbb',
             lineHeight: 1.7,
             maxWidth: 320,
           }}>
@@ -86,11 +86,11 @@ export default async function MarketReportsPage() {
             <Link
               key={report.slug}
               href={`/dashboard/market-reports/${report.slug}`}
-              style={{ textDecoration: 'none' }}
+              style={{ textDecoration: 'none', cursor: 'pointer' }}
               className="group"
             >
               <div style={{
-                padding: '24px 0',
+                padding: '20px 0 24px',
                 borderBottom: '1px solid #f0f0f0',
               }}>
                 {/* Date */}

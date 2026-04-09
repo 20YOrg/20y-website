@@ -93,7 +93,7 @@ export default function HyperliquidQ1Chart() {
         {[
           { label: 'DEX share Jan 2026', value: '36.4%', green: false },
           { label: 'DEX share Mar 2026', value: '44%', green: true },
-          { label: 'Active users 2025', value: '1.4M', green: false },
+          { label: 'Active users', value: '25,000', green: false },
           { label: 'Annualised revenue', value: '$600M+', green: false },
         ].map((s) => (
           <div key={s.label} style={{ border: '1px solid #e5e5e5', padding: '8px 14px', minWidth: 110 }}>

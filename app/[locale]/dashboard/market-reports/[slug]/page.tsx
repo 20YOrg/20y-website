@@ -18,7 +18,7 @@ export default async function MarketReportDetailPage({
   if (!report) notFound()
 
   return (
-    <div style={{ padding: '40px 0 80px' }}>
+    <div className="py-6 md:py-10 pb-16 md:pb-20">
 
       {/* Reading column — constrained for comfortable line length */}
       <div style={{ maxWidth: 660, margin: '0 auto' }}>
@@ -31,14 +31,13 @@ export default async function MarketReportDetailPage({
           fontSize: 11,
           fontWeight: 500,
           textDecoration: 'none',
-          display: 'inline-flex',
           alignItems: 'center',
           gap: 6,
           marginBottom: 40,
           textTransform: 'uppercase',
           letterSpacing: '0.08em',
         }}
-        className="text-[#bbbbbb] hover:text-[#1C4A60] transition-colors duration-150"
+        className="hidden md:inline-flex text-[#bbbbbb] hover:text-[#1C4A60] transition-colors duration-150"
       >
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

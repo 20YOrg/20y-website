@@ -53,6 +53,9 @@ export default function DashboardSidebar({ locale }: DashboardSidebarProps) {
     { href: '/dashboard/market-reports', label: t('marketReports'), icon: IconReports },
   ]
 
+  const isReportDetail = pathname.startsWith('/dashboard/market-reports/') &&
+    pathname !== '/dashboard/market-reports'
+
   function isActive(href: string) {
     if (href.endsWith('/dashboard')) return pathname === href
     return pathname === href || pathname.startsWith(href + '/')
@@ -76,7 +79,7 @@ export default function DashboardSidebar({ locale }: DashboardSidebarProps) {
         }}
       >
         {/* Portal label */}
-        <div style={{ padding: '36px 24px 24px' }}>
+        <div style={{ padding: '40px 24px 24px' }}>
           <p style={{
             fontFamily: 'var(--font-sans)',
             fontSize: 10,
@@ -153,12 +156,38 @@ export default function DashboardSidebar({ locale }: DashboardSidebarProps) {
         </div>
       </aside>
 
+      {/* Mobile: back button on detail pages */}
+      {isReportDetail && (
+        <Link
+          href="/dashboard/market-reports"
+          className="flex md:hidden items-center gap-2"
+          style={{
+            fontFamily: 'var(--font-sans)',
+            fontSize: 11,
+            fontWeight: 500,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: '#aaaaaa',
+            textDecoration: 'none',
+            marginTop: 24,
+            padding: '7px 0',
+          }}
+        >
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          {t('marketReports')}
+        </Link>
+      )}
+
       {/* Mobile tab bar */}
-      <div
-        className="flex md:hidden items-center"
-        style={{ borderBottom: '1px solid #ebebeb', backgroundColor: '#ffffff', padding: '0 4px' }}
+      {!isReportDetail && (
+      <nav
+        className="flex md:hidden items-center gap-2"
+        style={{ marginTop: 24 }}
       >
-        {links.map(({ href, label, icon: Icon }) => {
+        {links.map(({ href, label }) => {
           const active = isActive(href)
           return (
             <Link
@@ -166,19 +195,18 @@ export default function DashboardSidebar({ locale }: DashboardSidebarProps) {
               href={href}
               style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: 13,
+                fontSize: 11,
                 fontWeight: active ? 600 : 400,
-                color: active ? '#1a1a1a' : '#888888',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                color: active ? '#1a1a1a' : '#aaaaaa',
                 textDecoration: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 7,
-                padding: '14px 16px',
-                borderBottom: active ? '2px solid #1a1a1a' : '2px solid transparent',
-                minHeight: 44,
+                padding: '7px 12px',
+                borderRadius: 20,
+                backgroundColor: active ? '#f0f0f0' : 'transparent',
+                whiteSpace: 'nowrap',
               }}
             >
-              <Icon active={active} />
               {label}
             </Link>
           )
@@ -186,25 +214,21 @@ export default function DashboardSidebar({ locale }: DashboardSidebarProps) {
         <button
           onClick={handleLogout}
           style={{
-            fontFamily: 'var(--font-sans)',
-            fontSize: 13,
-            color: '#888888',
             background: 'none',
             border: 'none',
-            borderBottom: '2px solid transparent',
             cursor: 'pointer',
+            padding: '7px 8px',
+            marginLeft: 'auto',
+            color: '#cccccc',
             display: 'flex',
             alignItems: 'center',
-            gap: 7,
-            padding: '14px 16px',
-            marginLeft: 'auto',
-            minHeight: 44,
+            borderRadius: 20,
           }}
         >
           <IconLogout />
-          {t('logout')}
         </button>
-      </div>
+      </nav>
+      )}
     </>
   )
 }

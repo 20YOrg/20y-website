@@ -12,6 +12,7 @@ interface UserMenuProps {
 export default function UserMenu({ locale, onClose }: UserMenuProps) {
   const t = useTranslations('nav')
   const [user, setUser] = useState<{ email: string; name?: string } | null>(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch('/api/auth/me')
@@ -20,7 +21,10 @@ export default function UserMenu({ locale, onClose }: UserMenuProps) {
         setUser(data?.email ? data : null)
       })
       .catch(() => {})
+      .finally(() => setLoading(false))
   }, [])
+
+  if (loading) return null
 
   if (!user) {
     return (

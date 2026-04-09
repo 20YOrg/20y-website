@@ -20,11 +20,11 @@ function Label({ children }: { children: React.ReactNode }) {
   )
 }
 
-function Row({ label, value }: { label: string; value: string }) {
+function Row({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
   return (
     <div
-      className="flex flex-col sm:flex-row sm:items-center"
-      style={{ padding: '13px 0', borderBottom: '1px solid #f2f2f2' }}
+      className="flex flex-col sm:flex-row sm:items-baseline"
+      style={{ padding: '16px 0', borderBottom: '1px solid #f2f2f2' }}
     >
       <dt style={{
         fontFamily: 'var(--font-sans)',
@@ -33,18 +33,20 @@ function Row({ label, value }: { label: string; value: string }) {
         color: '#999999',
         textTransform: 'uppercase',
         letterSpacing: '0.08em',
-        minWidth: 176,
+        minWidth: 192,
         flexShrink: 0,
-        marginBottom: 2,
+        marginBottom: 3,
       }}>
         {label}
       </dt>
       <dd style={{
-        fontFamily: 'var(--font-sans)',
-        fontSize: 14,
+        fontFamily: mono ? 'ui-monospace, monospace' : 'var(--font-sans)',
+        fontSize: mono ? 12 : 14,
+        fontWeight: 500,
         color: '#1a1a1a',
         lineHeight: 1.5,
         wordBreak: 'break-all',
+        letterSpacing: mono ? '0.04em' : undefined,
       }}>
         {value}
       </dd>
@@ -54,10 +56,10 @@ function Row({ label, value }: { label: string; value: string }) {
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section style={{ marginBottom: 48 }}>
+    <section style={{ marginBottom: 44 }}>
       <h2 style={{
         fontFamily: 'var(--font-serif)',
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: 400,
         color: '#1a1a1a',
         letterSpacing: '0.01em',
@@ -86,7 +88,7 @@ export default async function DashboardPage() {
   const investor = await getInvestorByEmail(email)
 
   return (
-    <div style={{ padding: '40px 0 72px' }}>
+    <div className="py-6 md:py-10 pb-16 md:pb-[72px]">
 
       {/* Header */}
       <div style={{ marginBottom: 40 }}>
@@ -120,10 +122,10 @@ export default async function DashboardPage() {
         <>
           {/* Key stats */}
           <div
-            className="grid grid-cols-1 sm:grid-cols-3"
-            style={{ gap: 1, backgroundColor: '#ebebeb', marginBottom: 48 }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-px sm:gap-0 border border-[#e5e5e5] sm:border-0 bg-[#e5e5e5] sm:bg-transparent"
+            style={{ marginBottom: 48 }}
           >
-            <div style={{ backgroundColor: '#ffffff', padding: '24px 24px 28px' }}>
+            <div className="sm:pr-10 sm:border-r sm:border-[#e5e5e5]" style={{ backgroundColor: '#ffffff', padding: '24px 24px 28px' }}>
               <Label>{t('investmentSummary.amount')}</Label>
               <p style={{
                 fontFamily: 'var(--font-serif)',
@@ -145,7 +147,7 @@ export default async function DashboardPage() {
               </p>
             </div>
 
-            <div style={{ backgroundColor: '#ffffff', padding: '24px 24px 28px' }}>
+            <div className="sm:px-10 sm:border-r sm:border-[#e5e5e5]" style={{ backgroundColor: '#ffffff', padding: '24px 24px 28px' }}>
               <Label>{t('investmentSummary.investmentDate')}</Label>
               <p style={{
                 fontFamily: 'var(--font-serif)',
@@ -158,7 +160,7 @@ export default async function DashboardPage() {
               </p>
             </div>
 
-            <div style={{ backgroundColor: '#ffffff', padding: '24px 24px 28px' }}>
+            <div className="sm:pl-10" style={{ backgroundColor: '#ffffff', padding: '24px 24px 28px' }}>
               <Label>{t('investmentSummary.status')}</Label>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 2 }}>
                 <span style={{
@@ -187,7 +189,7 @@ export default async function DashboardPage() {
           </Section>
 
           <Section title={t('wallet.heading')}>
-            <Row label={t('wallet.address')} value={investor.wallet_address || '—'} />
+            <Row label={t('wallet.address')} value={investor.wallet_address || '—'} mono />
           </Section>
 
           <Section title={t('documents.heading')}>
