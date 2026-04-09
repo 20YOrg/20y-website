@@ -73,7 +73,7 @@ export default function CreateInvestorForm() {
         const data = await res.json().catch(() => ({}))
         setErrorMsg(
           data.error === 'missing' ? 'Please fill in all required fields.' :
-          data.error === 'user_failed' ? 'Failed to create user account. The email may already be registered.' :
+          data.error === 'user_failed' ? `Failed to create user account: ${JSON.stringify(data.details)}` :
           data.error === 'investor_failed' ? `Member save failed: ${JSON.stringify(data.details)}` :
           'Something went wrong. Please try again.'
         )

@@ -1,9 +1,9 @@
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { getLocale } from 'next-intl/server'
-import AdminInviteForm from './AdminInviteForm'
+import AdminResetForm from './AdminResetForm'
 
-export default async function AdminInvitePage() {
+export default async function AdminResetPage() {
   const cookieStore = await cookies()
   const token = cookieStore.get('directus_token')?.value
   const locale = await getLocale()
@@ -13,5 +13,5 @@ export default async function AdminInvitePage() {
     redirect(loginPath)
   }
 
-  return <AdminInviteForm />
+  return <AdminResetForm />
 }

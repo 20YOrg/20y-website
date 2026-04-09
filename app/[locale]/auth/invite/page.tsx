@@ -35,7 +35,7 @@ function AcceptInviteForm() {
     setLoading(true)
 
     try {
-      const res = await fetch('/api/auth/accept-invite', {
+      const res = await fetch('/api/auth/invite', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, password }),

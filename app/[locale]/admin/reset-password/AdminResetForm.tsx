@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 
-export default function AdminInviteForm() {
+export default function AdminResetForm() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [lastEmail, setLastEmail] = useState('')
@@ -13,7 +13,7 @@ export default function AdminInviteForm() {
     setStatus('loading')
 
     try {
-      const res = await fetch('/api/admin/send-invite', {
+      const res = await fetch('/api/admin/send-reset', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -45,7 +45,7 @@ export default function AdminInviteForm() {
           marginBottom: 8,
         }}
       >
-        Invite Member
+        Reset Password
       </h1>
       <p
         style={{
@@ -56,7 +56,7 @@ export default function AdminInviteForm() {
           lineHeight: 1.6,
         }}
       >
-        First create the member's account in Directus, then send them a setup email here.
+        Send a password reset email to an existing member.
       </p>
 
       {status === 'success' && (
@@ -70,7 +70,7 @@ export default function AdminInviteForm() {
             marginBottom: 32,
           }}
         >
-          Setup email sent to {lastEmail}.
+          Password reset email sent to {lastEmail}.
         </p>
       )}
 
@@ -109,7 +109,7 @@ export default function AdminInviteForm() {
 
         {status === 'error' && (
           <p style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: '#b00' }}>
-            Failed to send email. Make sure the member account exists in Directus first.
+            Failed to send email. Make sure the member account exists in Directus.
           </p>
         )}
 
@@ -129,7 +129,7 @@ export default function AdminInviteForm() {
           }}
           className="hover:bg-black hover:text-white transition-colors"
         >
-          {status === 'loading' ? '…' : 'Send Setup Email'}
+          {status === 'loading' ? '…' : 'Send Reset Email'}
         </button>
       </form>
     </div>

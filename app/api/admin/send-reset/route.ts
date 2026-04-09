@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 
 const BASE = process.env.NEXT_PUBLIC_DIRECTUS_URL
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://20y.org'
 
 export async function POST(req: NextRequest) {
   const cookieStore = await cookies()
@@ -19,7 +20,7 @@ export async function POST(req: NextRequest) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email,
-        reset_url: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://20y.org'}/auth/reset-password`,
+        reset_url: `${SITE_URL}/auth/reset-password`,
       }),
     })
 

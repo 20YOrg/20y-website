@@ -72,10 +72,19 @@ export default function ResearchCard({ post, locale }: ResearchCardProps) {
               color: '#1a1a1a',
               marginBottom: 10,
               lineHeight: 1.3,
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: 8,
             }}
             className="group-hover:text-[#1C4A60] transition-colors"
           >
-            {post.title}
+            <span>{post.title}</span>
+            <span
+              style={{ fontSize: 18, flexShrink: 0 }}
+              className="inline-block translate-x-0 group-hover:translate-x-1 transition-transform"
+            >
+              →
+            </span>
           </h3>
           <p
             style={{

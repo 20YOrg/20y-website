@@ -18,22 +18,20 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'missing' }, { status: 400 })
   }
 
-  // Step 1: Create Directus user
-  const userRes = await fetch(`${BASE}/users`, {
+  // Step 1: Send invite — Directus creates the user and sends the invite email in one step
+  const inviteRes = await fetch(`${BASE}/users/invite`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${TOKEN}` },
     body: JSON.stringify({
       email,
-      password: crypto.randomUUID(), // temporary random password
       role: INVESTORS_ROLE_ID,
-      status: 'active',
+      invite_url: `${SITE_URL}/auth/invite`,
     }),
   })
 
-  if (!userRes.ok) {
-    const err = await userRes.json().catch(() => ({}))
+  if (!inviteRes.ok && inviteRes.status !== 204) {
+    const err = await inviteRes.json().catch(() => ({}))
     const errStr = JSON.stringify(err).toLowerCase()
-    // If user already exists (unique constraint), continue anyway
     if (!errStr.includes('unique') && !errStr.includes('duplicate') && !errStr.includes('already')) {
       return NextResponse.json({ error: 'user_failed', details: err }, { status: 400 })
     }
@@ -59,16 +57,6 @@ export async function POST(req: NextRequest) {
     const err = await investorRes.json().catch(() => ({}))
     return NextResponse.json({ error: 'investor_failed', details: err }, { status: 400 })
   }
-
-  // Step 3: Send setup email
-  await fetch(`${BASE}/auth/password/request`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      email,
-      reset_url: `${SITE_URL}/auth/reset-password`,
-    }),
-  })
 
   return NextResponse.json({ ok: true })
 }
