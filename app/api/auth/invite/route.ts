@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const res = await fetch(`${BASE}/auth/invite/accept`, {
+    const res = await fetch(`${BASE}/users/invite/accept`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ token, password }),
