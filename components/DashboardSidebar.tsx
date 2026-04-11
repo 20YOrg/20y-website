@@ -75,7 +75,10 @@ export default function DashboardSidebar({ locale }: DashboardSidebarProps) {
           width: 216,
           minWidth: 216,
           borderRight: '1px solid #ebebeb',
-          minHeight: 'calc(100vh - 64px)',
+          position: 'sticky',
+          top: 0,
+          height: '100vh',
+          overflowY: 'auto',
         }}
       >
         {/* Portal label */}
@@ -100,7 +103,7 @@ export default function DashboardSidebar({ locale }: DashboardSidebarProps) {
           .sidebar-logout:hover { color: #1C4A60; }
         `}</style>
 
-        <nav className="flex flex-col flex-1" style={{ padding: '0 12px' }}>
+        <nav className="flex flex-col flex-1" style={{ padding: '0 12px 32px' }}>
           {links.map(({ href, label, icon: Icon }) => {
             const active = isActive(href)
             return (
@@ -128,10 +131,8 @@ export default function DashboardSidebar({ locale }: DashboardSidebarProps) {
               </Link>
             )
           })}
-        </nav>
 
-        {/* Logout */}
-        <div style={{ padding: '8px 12px 32px' }}>
+          {/* Logout */}
           <button
             onClick={handleLogout}
             className="sidebar-logout"
@@ -148,12 +149,13 @@ export default function DashboardSidebar({ locale }: DashboardSidebarProps) {
               width: '100%',
               minHeight: 44,
               borderRadius: 4,
+              marginTop: 'auto',
             }}
           >
             <IconLogout />
             {t('logout')}
           </button>
-        </div>
+        </nav>
       </aside>
 
       {/* Mobile: back button on detail pages */}
@@ -219,7 +221,7 @@ export default function DashboardSidebar({ locale }: DashboardSidebarProps) {
             cursor: 'pointer',
             padding: '7px 8px',
             marginLeft: 'auto',
-            color: '#cccccc',
+            color: '#999999',
             display: 'flex',
             alignItems: 'center',
             borderRadius: 20,

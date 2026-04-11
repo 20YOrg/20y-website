@@ -119,6 +119,25 @@ export default function Navigation() {
   const pathname = usePathname()
   const router = useRouter()
   const [open, setOpen] = useState(false)
+  const [visible, setVisible] = useState(true)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    function handleScroll() {
+      const currentY = window.scrollY
+      if (currentY < 10) {
+        setVisible(true)
+      } else if (currentY < lastScrollY.current) {
+        setVisible(true)
+      } else if (currentY > lastScrollY.current + 4) {
+        setVisible(false)
+        setOpen(false)
+      }
+      lastScrollY.current = currentY
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   function switchLocale(newLocale: string) {
     router.push(pathname, { locale: newLocale })
@@ -131,7 +150,15 @@ export default function Navigation() {
   ]
 
   return (
-    <header style={{ borderBottom: '1px solid #e5e5e5', backgroundColor: '#ffffff', position: 'relative' }}>
+    <header style={{
+      borderBottom: '1px solid #e5e5e5',
+      backgroundColor: '#ffffff',
+      position: 'sticky',
+      top: 0,
+      zIndex: 50,
+      transform: visible ? 'translateY(0)' : 'translateY(-100%)',
+      transition: 'transform 0.3s ease',
+    }}>
       {/* Main bar */}
       <nav
         className="mx-auto flex items-center justify-between px-5 md:px-8"

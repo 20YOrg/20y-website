@@ -14,8 +14,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
   }
 
   return (
-    <div className="mx-auto px-5 md:px-8" style={{ maxWidth: 1200, minHeight: 'calc(100vh - 64px)' }}>
-      <div className="flex flex-col md:flex-row" style={{ minHeight: 'inherit' }}>
+    <div className="mx-auto px-5 md:px-8" style={{ maxWidth: 1200 }}>
+      <div className="flex flex-col md:flex-row">
         <DashboardSidebar locale={locale} />
         <main className="flex-1 min-w-0 md:pl-10">
           {children}

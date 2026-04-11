@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/navigation'
+import { usePathname } from 'next/navigation'
 
 const LABEL_STYLE: React.CSSProperties = {
   fontFamily: 'var(--font-sans)',
@@ -28,6 +29,8 @@ export default function Footer() {
   const nav = useTranslations('nav')
   const [email, setEmail] = useState('')
   const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'success' | 'duplicate' | 'error'>('idle')
+  const pathname = usePathname()
+  if (pathname.includes('/dashboard')) return null
 
   async function handleSubscribe(e: React.FormEvent) {
     e.preventDefault()
