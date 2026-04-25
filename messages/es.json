@@ -24,7 +24,7 @@
       "founderHook": "Un pianista de concierto y doctor en matemáticas que encontró la señal de Bitcoin antes de que el mundo oyera el ruido.",
       "founderLink": "Nuestro Fundador",
       "subscribeLabel": "Mantente Informado",
-      "subscribeDesc": "Suscríbete para recibir nuestros informes del fondo e ideas estructuradas sobre ciclos de mercado.",
+      "subscribeDesc": "Suscríbete para recibir investigación e ideas estructuradas sobre ciclos de mercado y nuevas tecnologías — reflexivas, infrecuentes y que vale la pena leer.",
       "subscribePlaceholder": "Correo electrónico",
       "subscribeButton": "Suscribirse",
       "subscribeSuccess": "Te has suscrito.",
@@ -146,7 +146,7 @@
     "colConnect": "Contacto",
     "colSubscribe": "Suscribirse",
     "newsletter": {
-      "description": "Actualizaciones sobre investigación y anuncios del fondo.",
+      "description": "Suscríbete para recibir investigación e ideas estructuradas sobre ciclos de mercado y nuevas tecnologías.",
       "placeholder": "Correo electrónico",
       "button": "Suscribirse",
       "success": "Te has suscrito.",

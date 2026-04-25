@@ -24,7 +24,7 @@
       "founderHook": "A concert pianist and PhD mathematician who found Bitcoin's signal before the world heard the noise.",
       "founderLink": "Our Founder",
       "subscribeLabel": "Stay Informed",
-      "subscribeDesc": "Subscribe to receive our fund reports and structured insights on market cycles.",
+      "subscribeDesc": "Subscribe for research and structured insights on market cycles and new technologies — thoughtful, infrequent, and worth reading.",
       "subscribePlaceholder": "Email address",
       "subscribeButton": "Subscribe",
       "subscribeSuccess": "You're subscribed.",
@@ -146,7 +146,7 @@
     "colConnect": "Connect",
     "colSubscribe": "Subscribe",
     "newsletter": {
-      "description": "Updates on research and fund announcements.",
+      "description": "Subscribe for research and structured insights on market cycles and new technologies.",
       "placeholder": "Email address",
       "button": "Subscribe",
       "success": "You're subscribed.",

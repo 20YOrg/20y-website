@@ -24,7 +24,7 @@
       "founderHook": "一位音乐会钢琴家与数学博士，在世界听见噪音之前，已率先捕捉到比特币的信号。",
       "founderLink": "创始人",
       "subscribeLabel": "保持关注",
-      "subscribeDesc": "订阅以接收我们的基金报告及对市场周期的结构性洞察。",
+      "subscribeDesc": "订阅以获取关于市场周期与新兴技术的研究与深度洞察——深思熟虑、不频繁发送、值得一读。",
       "subscribePlaceholder": "电子邮件地址",
       "subscribeButton": "订阅",
       "subscribeSuccess": "订阅成功。",
@@ -146,7 +146,7 @@
     "colConnect": "联系",
     "colSubscribe": "订阅",
     "newsletter": {
-      "description": "接收研究报告与基金动态更新。",
+      "description": "订阅以获取关于市场周期与新兴技术的研究与深度洞察。",
       "placeholder": "电子邮件地址",
       "button": "订阅",
       "success": "订阅成功。",
