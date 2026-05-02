@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/navigation'
 import { usePathname } from 'next/navigation'
+import { normalizeEmail } from '@/lib/email'
 
 const LABEL_STYLE: React.CSSProperties = {
   fontFamily: 'var(--font-sans)',
@@ -28,26 +29,30 @@ export default function Footer() {
   const t = useTranslations('footer')
   const nav = useTranslations('nav')
   const [email, setEmail] = useState('')
-  const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'success' | 'duplicate' | 'error'>('idle')
+  const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'success' | 'duplicate' | 'error' | 'invalid'>('idle')
   const pathname = usePathname()
   if (pathname.includes('/dashboard')) return null
 
   async function handleSubscribe(e: React.FormEvent) {
     e.preventDefault()
-    if (!email) return
+    const normalizedEmail = normalizeEmail(email)
+    if (!normalizedEmail) {
+      setSubStatus('invalid')
+      return
+    }
     setSubStatus('loading')
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: normalizedEmail }),
       })
       if (res.ok) {
         setSubStatus('success')
         setEmail('')
       } else {
         const data = await res.json().catch(() => ({}))
-        setSubStatus(data.error === 'duplicate' ? 'duplicate' : 'error')
+        setSubStatus(data.error === 'duplicate' ? 'duplicate' : data.error === 'invalid_email' ? 'invalid' : 'error')
       }
     } catch {
       setSubStatus('error')
@@ -192,9 +197,9 @@ export default function Footer() {
                   {subStatus === 'loading' ? '…' : t('newsletter.button')}
                 </button>
               </div>
-              {(subStatus === 'duplicate' || subStatus === 'error') && (
+              {(subStatus === 'duplicate' || subStatus === 'error' || subStatus === 'invalid') && (
                 <p style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: '#b00', marginTop: 6 }}>
-                  {subStatus === 'duplicate' ? t('newsletter.duplicate') : t('newsletter.error')}
+                  {subStatus === 'duplicate' ? t('newsletter.duplicate') : subStatus === 'invalid' ? t('newsletter.invalid') : t('newsletter.error')}
                 </p>
               )}
             </form>

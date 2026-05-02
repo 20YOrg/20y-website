@@ -29,6 +29,7 @@
       "subscribeButton": "订阅",
       "subscribeSuccess": "订阅成功。",
       "subscribeDuplicate": "该邮箱已订阅。",
+      "subscribeInvalid": "请输入有效的电子邮件地址。",
       "subscribeError": "出现错误，请重试。"
     }
   },
@@ -151,6 +152,7 @@
       "button": "订阅",
       "success": "订阅成功。",
       "duplicate": "该邮箱已订阅。",
+      "invalid": "请输入有效的电子邮件地址。",
       "error": "出现错误，请重试。"
     }
   }

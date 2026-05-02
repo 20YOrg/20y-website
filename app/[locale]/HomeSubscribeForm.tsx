@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { normalizeEmail } from '@/lib/email'
 
 interface Props {
   placeholder: string
@@ -8,28 +9,33 @@ interface Props {
   successMsg: string
   duplicateMsg: string
   errorMsg: string
+  invalidMsg: string
 }
 
-export default function HomeSubscribeForm({ placeholder, button, successMsg, duplicateMsg, errorMsg }: Props) {
+export default function HomeSubscribeForm({ placeholder, button, successMsg, duplicateMsg, errorMsg, invalidMsg }: Props) {
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'duplicate' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'duplicate' | 'error' | 'invalid'>('idle')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!email) return
+    const normalizedEmail = normalizeEmail(email)
+    if (!normalizedEmail) {
+      setStatus('invalid')
+      return
+    }
     setStatus('loading')
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: normalizedEmail }),
       })
       if (res.ok) {
         setStatus('success')
         setEmail('')
       } else {
         const data = await res.json().catch(() => ({}))
-        setStatus(data.error === 'duplicate' ? 'duplicate' : 'error')
+        setStatus(data.error === 'duplicate' ? 'duplicate' : data.error === 'invalid_email' ? 'invalid' : 'error')
       }
     } catch {
       setStatus('error')
@@ -83,9 +89,9 @@ export default function HomeSubscribeForm({ placeholder, button, successMsg, dup
           </button>
         </div>
       </form>
-      {(status === 'duplicate' || status === 'error') && (
+      {(status === 'duplicate' || status === 'error' || status === 'invalid') && (
         <p style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: '#b00', marginTop: 6 }}>
-          {status === 'duplicate' ? duplicateMsg : errorMsg}
+          {status === 'duplicate' ? duplicateMsg : status === 'invalid' ? invalidMsg : errorMsg}
         </p>
       )}
     </>

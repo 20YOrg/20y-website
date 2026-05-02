@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { normalizeEmail } from '@/lib/email'
 
 const BASE = process.env.NEXT_PUBLIC_DIRECTUS_URL
 const TOKEN = process.env.DIRECTUS_TOKEN
@@ -7,12 +8,13 @@ export async function POST(req: NextRequest) {
   if (!BASE || !TOKEN) return NextResponse.json({ error: 'server' }, { status: 503 })
 
   const { email } = await req.json()
-  if (!email) return NextResponse.json({ error: 'missing' }, { status: 400 })
+  const normalizedEmail = normalizeEmail(email)
+  if (!normalizedEmail) return NextResponse.json({ error: 'invalid_email' }, { status: 400 })
 
   const res = await fetch(`${BASE}/items/subscribers`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${TOKEN}` },
-    body: JSON.stringify({ email }),
+    body: JSON.stringify({ email: normalizedEmail }),
   })
 
   if (!res.ok) {

@@ -92,6 +92,7 @@ export default async function HomePage() {
               successMsg={t('sections.subscribeSuccess')}
               duplicateMsg={t('sections.subscribeDuplicate')}
               errorMsg={t('sections.subscribeError')}
+              invalidMsg={t('sections.subscribeInvalid')}
             />
           </div>
         </div>

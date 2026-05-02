@@ -29,6 +29,7 @@
       "subscribeButton": "Subscribe",
       "subscribeSuccess": "You're subscribed.",
       "subscribeDuplicate": "Already subscribed.",
+      "subscribeInvalid": "Please enter a valid email address.",
       "subscribeError": "Something went wrong."
     }
   },
@@ -151,6 +152,7 @@
       "button": "Subscribe",
       "success": "You're subscribed.",
       "duplicate": "This email is already subscribed.",
+      "invalid": "Please enter a valid email address.",
       "error": "Something went wrong. Please try again."
     }
   }

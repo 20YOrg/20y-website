@@ -29,6 +29,7 @@
       "subscribeButton": "Suscribirse",
       "subscribeSuccess": "Te has suscrito.",
       "subscribeDuplicate": "Ya estás suscrito.",
+      "subscribeInvalid": "Introduce un correo electrónico válido.",
       "subscribeError": "Algo salió mal."
     }
   },
@@ -151,6 +152,7 @@
       "button": "Suscribirse",
       "success": "Te has suscrito.",
       "duplicate": "Este correo ya está suscrito.",
+      "invalid": "Introduce un correo electrónico válido.",
       "error": "Algo salió mal. Por favor, inténtalo de nuevo."
     }
   }
