@@ -114,7 +114,7 @@ function PrinciplesV2() {
 
         <div
           ref={stageRef}
-          className={`principles-v2-stage${activeLayer ? ' is-focused' : ''}${locale === 'zh' ? ' is-zh' : ''}`}
+          className={`principles-v2-stage${activeLayer ? ' is-focused' : ''}${locale === 'zh' ? ' is-zh' : ''}${locale === 'es' ? ' is-es' : ''}`}
           aria-label={t('stageAria')}
         >
           <svg className="principles-v2-paths" aria-hidden="true">
@@ -296,6 +296,10 @@ function PrinciplesV2() {
           overflow: visible;
           background: transparent;
           isolation: isolate;
+        }
+
+        .principles-v2-stage.is-es {
+          min-height: 740px;
         }
 
         .principles-v2-stage::before {
