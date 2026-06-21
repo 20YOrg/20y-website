@@ -52,6 +52,111 @@
     "card4": {
       "heading": "Convicción Concentrada",
       "body": "La diversificación por sí misma es especulación disfrazada. Concentramos donde la comprensión es más profunda, dimensionando posiciones por convicción genuina en lugar de miedo a la varianza. Esto fuerza la honestidad intelectual y amplifica el alfa que proviene de una investigación profunda y paciente."
+    },
+    "v2": {
+      "eyebrow": "Principios",
+      "headline": "La asignación seria empieza donde termina el permiso.",
+      "lead": "2ØY se construye sobre una visión a veinte años: el conocimiento, el valor y la coordinación están migrando de instituciones centralizadas a redes abiertas.",
+      "stageAria": "Mapa interactivo de instituciones antiguas e infraestructura nueva",
+      "stageKicker": "Mapa de dependencia",
+      "stageHint": "Pasa el cursor o toca un nodo negro",
+      "oldSource": "fuente antigua",
+      "openLayer": "capa abierta",
+      "core": "Exit",
+      "readout": {
+        "title": "Elige una capa.",
+        "body": "Cada red abierta elimina el permiso de una función que antes controlaban las instituciones."
+      },
+      "layers": {
+        "internet": {
+          "old": "Religión",
+          "label": "Internet",
+          "readoutTitle": "Internet descentraliza el conocimiento.",
+          "readoutBody": "Las respuestas ya no requieren autoridad institucional. Cualquiera puede buscar, publicar, verificar y coordinar conocimiento sin permiso."
+        },
+        "bitcoin": {
+          "old": "Bancos",
+          "label": "Bitcoin",
+          "readoutTitle": "Bitcoin hace que el valor sea peer-to-peer.",
+          "readoutBody": "El valor ya no necesita un intermediario de confianza. La propiedad se mueve mediante claves, no mediante permiso del sistema bancario."
+        },
+        "ai": {
+          "old": "Estado",
+          "label": "IA",
+          "readoutTitle": "La IA crea una inteligencia decisoria superior.",
+          "readoutBody": "Un sistema con acceso a más conocimiento que cualquier humano puede razonar más rápido, comparar más opciones y tomar mejores decisiones con menos burocracia."
+        }
+      },
+      "ticker": {
+        "internet": "Internet descentraliza el conocimiento.",
+        "bitcoin": "Bitcoin hace que el valor sea peer-to-peer.",
+        "ai": "La IA crea una inteligencia decisoria superior.",
+        "exit": "La ausencia de permiso se compone en silencio."
+      },
+      "map": {
+        "label": "El mapa estructural",
+        "heading": "El fondo se organiza alrededor de funciones, no de eslóganes.",
+        "function": "función heredada",
+        "answers": {
+          "title": "Respuestas",
+          "old": "La religión institucional ofrecía verdad, sentido y orden moral.",
+          "new": "El conocimiento nativo de Internet vuelve las respuestas buscables, plurales y globales."
+        },
+        "custody": {
+          "title": "Custodia",
+          "old": "Los bancos convirtieron la confianza en un negocio intermediado.",
+          "new": "Bitcoin mueve valor sin permiso, inflación o terceros de confianza."
+        },
+        "coordination": {
+          "title": "Coordinación",
+          "old": "Los estados coordinan mediante fronteras, burocracia y fuerza.",
+          "new": "La IA y los network states hacen que la coordinación sea más eficiente, adaptativa y voluntaria."
+        }
+      },
+      "belief": {
+        "label": "Creencia central",
+        "heading": "Voice legitima el sistema. Exit crea libertad.",
+        "darkCopy": "Retirar tiempo, atención, confianza y participación de sistemas que ya no los merecen.",
+        "darkTitleLine1": "Exit",
+        "darkTitleLine2": "sobre",
+        "darkTitleLine3": "Voice",
+        "voice": {
+          "title": "Voice",
+          "body": "Mantiene la atención dentro del sistema y le da la legitimidad que necesita para sobrevivir."
+        },
+        "exit": {
+          "title": "Exit",
+          "body": "Retira la participación y construye vías paralelas donde la libertad se vuelve práctica."
+        },
+        "allocate": {
+          "title": "Asignar",
+          "body": "Respaldar las redes que hacen que el exit sea más práctico, resiliente y útil."
+        }
+      },
+      "principles": {
+        "label": "Cómo asignamos",
+        "heading": "Tesis radical. Ejecución sobria.",
+        "duration": {
+          "title": "Larga Duración",
+          "body": "Las migraciones de infraestructura se miden en décadas, no en trimestres."
+        },
+        "firstPrinciples": {
+          "title": "Primeros Principios",
+          "body": "Preguntamos qué problema reemplaza una red antes de que importen las narrativas del mercado."
+        },
+        "discipline": {
+          "title": "Disciplina Institucional",
+          "body": "Riesgo explícito, revisión sistemática y nada de teatro de trading."
+        },
+        "conviction": {
+          "title": "Convicción Concentrada",
+          "body": "La paciencia solo es racional cuando la comprensión es profunda."
+        }
+      },
+      "closing": {
+        "label": "Horizonte a veinte años",
+        "body": "La tesis no es la volatilidad. La tesis es que los sistemas abiertos siguen absorbiendo funciones institucionales."
+      }
     }
   },
   "founder": {

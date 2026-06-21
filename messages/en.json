@@ -52,6 +52,111 @@
     "card4": {
       "heading": "Concentrated Conviction",
       "body": "Diversification for its own sake is disguised speculation. We concentrate where understanding is deepest, sizing positions by true conviction rather than fear of variance. This forces intellectual honesty and amplifies the alpha that comes from deep, patient research."
+    },
+    "v2": {
+      "eyebrow": "Principles",
+      "headline": "Serious allocation begins where permission ends.",
+      "lead": "2ØY is built on a twenty-year view: knowledge, value, and coordination are migrating from centralized institutions into open networks.",
+      "stageAria": "Interactive map of old institutions and new infrastructure",
+      "stageKicker": "Dependency map",
+      "stageHint": "Hover or click a black node",
+      "oldSource": "old source",
+      "openLayer": "open layer",
+      "core": "Exit",
+      "readout": {
+        "title": "Choose a layer.",
+        "body": "Each open network removes permission from a function once controlled by institutions."
+      },
+      "layers": {
+        "internet": {
+          "old": "Religion",
+          "label": "Internet",
+          "readoutTitle": "Internet decentralizes knowledge.",
+          "readoutBody": "Answers no longer require institutional authority. Anyone can search, publish, verify, and coordinate around knowledge without permission."
+        },
+        "bitcoin": {
+          "old": "Banks",
+          "label": "Bitcoin",
+          "readoutTitle": "Bitcoin makes value peer-to-peer.",
+          "readoutBody": "Value no longer needs a trusted intermediary. Ownership moves by keys, not by permission from a banking system."
+        },
+        "ai": {
+          "old": "State",
+          "label": "AI",
+          "readoutTitle": "AI creates superior decision intelligence.",
+          "readoutBody": "A system with access to more knowledge than any human can reason faster, compare more options, and make better decisions with less bureaucracy."
+        }
+      },
+      "ticker": {
+        "internet": "Internet decentralizes knowledge.",
+        "bitcoin": "Bitcoin makes value peer-to-peer.",
+        "ai": "AI creates superior decision intelligence.",
+        "exit": "Permissionlessness compounds quietly."
+      },
+      "map": {
+        "label": "The structural map",
+        "heading": "The fund is organized around functions, not slogans.",
+        "function": "legacy function",
+        "answers": {
+          "title": "Answers",
+          "old": "Institutional religion once provided truth, meaning, and moral order.",
+          "new": "Internet-native knowledge makes answers searchable, plural, and global."
+        },
+        "custody": {
+          "title": "Custody",
+          "old": "Banks turned trust into an intermediary business.",
+          "new": "Bitcoin moves value without permission, inflation, or a trusted third party."
+        },
+        "coordination": {
+          "title": "Coordination",
+          "old": "States coordinate through borders, bureaucracy, and force.",
+          "new": "AI and network states make coordination more efficient, adaptive, and voluntary."
+        }
+      },
+      "belief": {
+        "label": "Core belief",
+        "heading": "Voice legitimizes the system. Exit creates freedom.",
+        "darkCopy": "Withdraw time, attention, trust, and participation from systems that no longer deserve them.",
+        "darkTitleLine1": "Exit",
+        "darkTitleLine2": "over",
+        "darkTitleLine3": "Voice",
+        "voice": {
+          "title": "Voice",
+          "body": "Keeps attention inside the system and gives it the legitimacy it needs to survive."
+        },
+        "exit": {
+          "title": "Exit",
+          "body": "Withdraws participation and builds parallel rails where freedom becomes practical."
+        },
+        "allocate": {
+          "title": "Allocate",
+          "body": "Underwrite the networks that make exit more practical, resilient, and useful."
+        }
+      },
+      "principles": {
+        "label": "How we allocate",
+        "heading": "Radical thesis. Sober execution.",
+        "duration": {
+          "title": "Long Duration",
+          "body": "Infrastructure migrations are measured in decades, not quarters."
+        },
+        "firstPrinciples": {
+          "title": "First Principles",
+          "body": "We ask what problem a network replaces before market narratives matter."
+        },
+        "discipline": {
+          "title": "Institutional Discipline",
+          "body": "Explicit risk, systematic review, and no trading theater."
+        },
+        "conviction": {
+          "title": "Concentrated Conviction",
+          "body": "Patience is rational only where understanding is deep."
+        }
+      },
+      "closing": {
+        "label": "Twenty-year horizon",
+        "body": "The thesis is not volatility. The thesis is that open systems keep absorbing institutional functions."
+      }
     }
   },
   "founder": {
