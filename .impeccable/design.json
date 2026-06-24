@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-18T00:00:00+02:00",
+  "title": "Design System: 2OY Website",
+  "extensions": {
+    "colorMeta": {
+      "brand-black": {
+        "role": "primary",
+        "displayName": "Thesis Black",
+        "canonical": "#1a1a1a",
+        "tonalRamp": ["#000000", "#111111", "#1a1a1a", "#333333", "#555555", "#777777", "#aaaaaa", "#eeeeee"]
+      },
+      "brand-mid": {
+        "role": "neutral",
+        "displayName": "Analyst Gray",
+        "canonical": "#4a4a4a",
+        "tonalRamp": ["#151515", "#2a2a2a", "#4a4a4a", "#666666", "#858585", "#a3a3a3", "#c7c7c7", "#f0f0f0"]
+      },
+      "brand-light": {
+        "role": "neutral",
+        "displayName": "Archive Gray",
+        "canonical": "#7a7a7a",
+        "tonalRamp": ["#1f1f1f", "#3d3d3d", "#5f5f5f", "#7a7a7a", "#999999", "#b7b7b7", "#d6d6d6", "#f4f4f4"]
+      },
+      "brand-border": {
+        "role": "neutral",
+        "displayName": "Rule Gray",
+        "canonical": "#e5e5e5",
+        "tonalRamp": ["#292929", "#555555", "#7f7f7f", "#aaaaaa", "#c8c8c8", "#e5e5e5", "#f0f0f0", "#fafafa"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Institutional White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#1a1a1a", "#4a4a4a", "#7a7a7a", "#b5b5b5", "#d9d9d9", "#eeeeee", "#f8f8f8", "#ffffff"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page-level theses and primary headings."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Principle headings and important section titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Explanatory copy and analytical prose."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Navigation, buttons, form labels, metadata, and small interface text."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "state-standard",
+        "value": "150ms ease",
+        "purpose": "Simple hover and focus transitions only."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "md",
+        "value": "768px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "The default institutional action: white at rest, black on hover.",
+      "html": "<button class=\"ds-btn-outline\">Subscribe</button>",
+      "css": ".ds-btn-outline { background: #ffffff; color: #1a1a1a; border: 1px solid #1a1a1a; border-radius: 0; padding: 10px 18px; font-family: Inter, 'Helvetica Neue', sans-serif; font-size: 14px; font-weight: 500; line-height: 1.4; transition: background 150ms ease, color 150ms ease; } .ds-btn-outline:hover { background: #1a1a1a; color: #ffffff; } .ds-btn-outline:focus-visible { outline: 2px solid #1a1a1a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Minimal Input",
+      "kind": "input",
+      "refersTo": "input-minimal",
+      "description": "A square, readable field for newsletter and member forms.",
+      "html": "<label class=\"ds-field\"><span>Email address</span><input class=\"ds-input\" placeholder=\"Email address\" /></label>",
+      "css": ".ds-field { display: grid; gap: 8px; font-family: Inter, 'Helvetica Neue', sans-serif; color: #1a1a1a; font-size: 14px; font-weight: 500; } .ds-input { background: #ffffff; color: #1a1a1a; border: 1px solid #e5e5e5; border-radius: 0; padding: 10px 12px; font: inherit; font-size: 16px; } .ds-input::placeholder { color: #7a7a7a; } .ds-input:focus { outline: none; border-color: #1a1a1a; }"
+    },
+    {
+      "name": "Principle Block",
+      "kind": "card",
+      "refersTo": "principle-block",
+      "description": "A thesis container with serif heading, analytical body copy, and no decorative card shell.",
+      "html": "<section class=\"ds-principle\"><h2>Long Duration as Strategy</h2><p>Duration is the fund's edge: time filters noise and lets structural shifts compound.</p></section>",
+      "css": ".ds-principle { background: #ffffff; color: #4a4a4a; border-left: 1px solid #1a1a1a; padding: 8px 0 8px 24px; box-shadow: none; border-radius: 0; } .ds-principle h2 { margin: 0 0 12px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 500; line-height: 1.25; color: #1a1a1a; } .ds-principle p { margin: 0; font-family: Inter, 'Helvetica Neue', sans-serif; font-size: 16px; line-height: 1.75; color: #4a4a4a; }"
+    },
+    {
+      "name": "Quiet Navigation Link",
+      "kind": "nav",
+      "description": "A restrained text link for top-level navigation.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">Investment Principles</a>",
+      "css": ".ds-nav-link { color: #1a1a1a; font-family: Inter, 'Helvetica Neue', sans-serif; font-size: 14px; font-weight: 500; line-height: 1.4; text-decoration: none; text-underline-offset: 4px; } .ds-nav-link:hover, .ds-nav-link:focus-visible { text-decoration: underline; } .ds-nav-link:focus-visible { outline: 2px solid #1a1a1a; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Investment Thesis",
+    "overview": "The 2OY visual system should feel like an institutional thesis presented with mathematical restraint. It is deliberately sparse: white surface, black type, ruled separators, and enough space for conviction to land without theatrics. The page should feel composed by someone who expects the reader to be intelligent.\n\nVisual richness comes from structure, pacing, hierarchy, and editorial compression, not decoration. The system rejects SaaS and AI-startup cliches, crypto hype, and bank-brochure blandness. It should never look like a template trying to look expensive; it should look like a fund with a worldview.",
+    "keyCharacteristics": [
+      "Minimal, high-contrast, and text-led.",
+      "Serif display type for thesis-level statements; sans body type for analysis and action.",
+      "Flat surfaces with borders and rules instead of shadows.",
+      "Sparse accent use; black and white carry the institution.",
+      "Copy blocks should be shortened until each line has a job."
+    ],
+    "rules": [
+      {
+        "name": "The Monochrome Conviction Rule",
+        "body": "Black and white are not placeholders; they are the identity. Add color only when it clarifies meaning better than type, spacing, or structure.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Signal-Noise Rule",
+        "body": "Gradients, glows, neon accents, and decorative color fields are prohibited because they compete with the fund's thesis.",
+        "section": "colors"
+      },
+      {
+        "name": "The Thesis First Rule",
+        "body": "Use the serif only when the text is carrying a real idea. Do not spend display type on filler labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Tracking Reflex Rule",
+        "body": "Avoid repeated tiny uppercase tracked labels above every section. One deliberate label can work; repeating them becomes AI scaffolding.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Institution Rule",
+        "body": "Surfaces do not float. If something needs emphasis, use position, type scale, a rule line, or a full border before reaching for a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do lead with thesis-level hierarchy before explanation.",
+      "Do preserve the white, black, and gray institutional palette.",
+      "Do use borders and dividers as structure, not decoration.",
+      "Do keep line lengths readable and shorten copy until every paragraph is load-bearing.",
+      "Do design multilingual layouts that tolerate English, Spanish, and Chinese text length differences."
+    ],
+    "donts": [
+      "Don't use SaaS and AI-startup cliches: purple gradients, glowing blobs, rounded icon tiles, endless card grids, generic hero metrics, or decorative motion.",
+      "Don't use crypto hype: neon palettes, black-and-gold wealth signals, moonshot language, token-pumping visuals, or anything that implies fast money.",
+      "Don't use bank-brochure blandness: generic financial copy, stock-photo trust signals, empty prestige language, or belief-free polish.",
+      "Don't add shadows to bordered cards or buttons.",
+      "Don't use thick border-left stripes as accents on cards or callouts.",
+      "Don't turn every idea into an identical card. Structure the argument instead."
+    ]
+  }
+}

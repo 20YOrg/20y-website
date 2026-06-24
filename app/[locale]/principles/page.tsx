@@ -715,7 +715,7 @@ function PrinciplesV2() {
           }
         }
 
-        @media (max-width: 620px) {
+        @media (max-width: 760px) {
           .principles-v2-shell {
             width: min(100% - 28px, 1180px);
           }
@@ -727,31 +727,75 @@ function PrinciplesV2() {
           }
 
           .principles-v2-stage {
-            min-height: 820px;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 230px));
+            grid-template-areas:
+              "old-internet new-internet"
+              "old-bitcoin new-bitcoin"
+              "old-ai new-ai"
+              "core core"
+              "readout readout";
+            justify-content: center;
+            gap: 14px;
+            min-height: auto;
+            padding-top: 8px;
           }
 
           .principles-v2-node {
-            width: 132px;
+            position: relative;
+            inset: auto;
+            width: 100%;
+            min-height: 86px;
+            padding: 13px 14px;
           }
 
-          .principles-v2-node.internet.old { left: 22px; top: 92px; }
-          .principles-v2-node.bitcoin.old { left: 22px; top: 286px; }
-          .principles-v2-node.ai.old { left: 22px; top: 480px; }
-          .principles-v2-node.internet.new { right: 22px; top: 88px; }
-          .principles-v2-node.bitcoin.new { right: 22px; top: 350px; }
-          .principles-v2-node.ai.new { right: 22px; top: 612px; }
+          .principles-v2-node strong {
+            font-size: clamp(25px, 8vw, 30px);
+          }
+
+          .principles-v2-node.internet.old { grid-area: old-internet; }
+          .principles-v2-node.bitcoin.old { grid-area: old-bitcoin; }
+          .principles-v2-node.ai.old { grid-area: old-ai; }
+          .principles-v2-node.internet.new { grid-area: new-internet; }
+          .principles-v2-node.bitcoin.new { grid-area: new-bitcoin; }
+          .principles-v2-node.ai.new { grid-area: new-ai; }
+
+          .principles-v2-node.new:hover,
+          .principles-v2-node.new:focus-visible,
+          .principles-v2-node.new.is-active,
+          .principles-v2-node.old:hover,
+          .principles-v2-node.old:focus-visible,
+          .principles-v2-node.old.is-source {
+            transform: none;
+          }
 
           .principles-v2-core {
+            position: relative;
+            left: auto;
+            top: auto;
+            grid-area: core;
             width: 118px;
             height: 118px;
+            margin: 42px auto 50px;
+            transform: none;
           }
 
           .principles-v2-core span {
             font-size: 32px;
           }
 
+          .principles-v2-stage::before,
+          .principles-v2-paths {
+            display: none;
+          }
+
           .principles-v2-readout {
-            bottom: 18px;
+            position: relative;
+            left: auto;
+            bottom: auto;
+            grid-area: readout;
+            width: 100%;
+            transform: none;
           }
 
           .principles-v2-section {
