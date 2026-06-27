@@ -16,6 +16,11 @@ function PrinciplesV2() {
   const t = useTranslations('principles.v2')
   const [activeLayer, setActiveLayer] = useState<'internet' | 'bitcoin' | 'ai' | null>(null)
   const stageRef = useRef<HTMLDivElement>(null)
+  const pinRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+  const [revealed, setRevealed] = useState(3)
+  const order = ['internet', 'bitcoin', 'ai'] as const
+  const isRevealed = (key: 'internet' | 'bitcoin' | 'ai') => order.indexOf(key) < revealed
   const [paths, setPaths] = useState<Record<'internet' | 'bitcoin' | 'ai', string>>({
     internet: '',
     bitcoin: '',
@@ -100,7 +105,44 @@ function PrinciplesV2() {
       window.clearTimeout(timeout)
       window.removeEventListener('resize', updatePaths)
     }
+  }, [isMobile])
+
+  // Track viewport so the scroll-reveal only runs on mobile.
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 760px)')
+    const sync = () => setIsMobile(mq.matches)
+    sync()
+    mq.addEventListener('change', sync)
+    return () => mq.removeEventListener('change', sync)
   }, [])
+
+  // Mobile: reveal layers one row at a time as the pinned stage scrolls.
+  useEffect(() => {
+    if (!isMobile) {
+      setRevealed(3)
+      return
+    }
+    setRevealed(0)
+    const thresholds = [0.08, 0.4, 0.72]
+    const onScroll = () => {
+      const pin = pinRef.current
+      if (!pin) return
+      const rect = pin.getBoundingClientRect()
+      const scrollable = pin.offsetHeight - window.innerHeight
+      const p = scrollable > 0 ? Math.min(1, Math.max(0, -rect.top / scrollable)) : 0
+      const count = thresholds.reduce((acc, t) => (p >= t ? acc + 1 : acc), 0)
+      setRevealed(count)
+      setActiveLayer(count > 0 ? order[count - 1] : null)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile])
 
   return (
     <>
@@ -112,6 +154,7 @@ function PrinciplesV2() {
           <p className="principles-v2-lead">{t('lead')}</p>
         </div>
 
+        <div ref={pinRef} className="principles-v2-pin">
         <div
           ref={stageRef}
           className={`principles-v2-stage${activeLayer ? ' is-focused' : ''}${locale === 'zh' ? ' is-zh' : ''}${locale === 'es' ? ' is-es' : ''}`}
@@ -121,7 +164,7 @@ function PrinciplesV2() {
             {layers.map((layer) => (
               <path
                 key={layer.key}
-                className={activeLayer === layer.key ? 'is-active' : ''}
+                className={`${activeLayer === layer.key ? 'is-active' : ''}${isRevealed(layer.key) ? ' is-revealed' : ''}`}
                 d={paths[layer.key]}
               />
             ))}
@@ -130,7 +173,7 @@ function PrinciplesV2() {
           {layers.map((layer) => (
             <button
               key={`old-${layer.key}`}
-              className={`principles-v2-node old ${layer.key}${activeLayer === layer.key ? ' is-source' : ''}`}
+              className={`principles-v2-node old ${layer.key}${activeLayer === layer.key ? ' is-source' : ''}${isRevealed(layer.key) ? ' is-revealed' : ''}`}
               data-old={layer.key}
               type="button"
               onClick={() => activateLayer(layer.key)}
@@ -149,7 +192,7 @@ function PrinciplesV2() {
           {layers.map((layer) => (
             <button
               key={layer.key}
-              className={`principles-v2-node new ${layer.key}${activeLayer === layer.key ? ' is-active' : ''}`}
+              className={`principles-v2-node new ${layer.key}${activeLayer === layer.key ? ' is-active' : ''}${isRevealed(layer.key) ? ' is-revealed' : ''}`}
               data-new={layer.key}
               type="button"
               onClick={() => activateLayer(layer.key)}
@@ -167,6 +210,7 @@ function PrinciplesV2() {
             <strong>{active.title}</strong>
             <span>{active.body}</span>
           </p>
+        </div>
         </div>
       </div>
 
@@ -288,6 +332,10 @@ function PrinciplesV2() {
           font-family: var(--font-sans);
           font-size: 17px;
           line-height: 1.75;
+        }
+
+        .principles-v2-pin {
+          display: contents;
         }
 
         .principles-v2-stage {
@@ -425,8 +473,8 @@ function PrinciplesV2() {
         .principles-v2-node.new:focus-visible,
         .principles-v2-node.new.is-active {
           transform: translateY(-7px);
-          background: #ffffff;
-          color: #151515;
+          background: #1C4A60;
+          color: #ffffff;
           outline: none;
         }
 
@@ -437,12 +485,6 @@ function PrinciplesV2() {
           border-color: #151515;
           color: #151515;
           outline: none;
-        }
-
-        .principles-v2-node.new:hover small,
-        .principles-v2-node.new:focus-visible small,
-        .principles-v2-node.new.is-active small {
-          color: #777777;
         }
 
         .principles-v2-node.internet.old { left: 48px; top: 84px; }
@@ -722,80 +764,102 @@ function PrinciplesV2() {
 
           .principles-v2-hero {
             min-height: auto;
-            padding-top: 42px;
+            padding-top: 36px;
             grid-template-columns: 1fr;
+            gap: 8px;
+          }
+
+          .principles-v2-pin {
+            display: block;
+            position: relative;
+            height: 300vh;
           }
 
           .principles-v2-stage {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 230px));
-            grid-template-areas:
-              "old-internet new-internet"
-              "old-bitcoin new-bitcoin"
-              "old-ai new-ai"
-              "core core"
-              "readout readout";
-            justify-content: center;
-            gap: 14px;
-            min-height: auto;
-            padding-top: 8px;
+            position: sticky;
+            top: calc(50vh - 300px);
+            min-height: 0;
+            height: 600px;
+            padding-top: 0;
           }
 
           .principles-v2-node {
-            position: relative;
-            inset: auto;
-            width: 100%;
-            min-height: 86px;
-            padding: 13px 14px;
+            width: 104px;
+            min-height: 60px;
+            padding: 11px 12px;
+            opacity: 0.3;
+            transition: opacity 0.45s ease, background 0.45s ease, color 0.45s ease, border-color 0.45s ease;
+          }
+
+          .principles-v2-node.is-active,
+          .principles-v2-node.is-source {
+            opacity: 1;
+          }
+
+          .principles-v2-stage .principles-v2-node.is-active,
+          .principles-v2-stage .principles-v2-node.is-source {
+            transform: none;
+          }
+
+          .principles-v2-paths path {
+            opacity: 0.16;
+            transition: opacity 0.55s ease;
+          }
+
+          .principles-v2-paths path.is-revealed {
+            opacity: 0.5;
+          }
+
+          .principles-v2-paths path.is-active {
+            opacity: 1;
+            stroke-width: 2;
+          }
+
+          .principles-v2-node small {
+            margin-bottom: 3px;
+            font-size: 11px;
           }
 
           .principles-v2-node strong {
-            font-size: clamp(25px, 8vw, 30px);
+            font-size: 22px;
           }
 
-          .principles-v2-node.internet.old { grid-area: old-internet; }
-          .principles-v2-node.bitcoin.old { grid-area: old-bitcoin; }
-          .principles-v2-node.ai.old { grid-area: old-ai; }
-          .principles-v2-node.internet.new { grid-area: new-internet; }
-          .principles-v2-node.bitcoin.new { grid-area: new-bitcoin; }
-          .principles-v2-node.ai.new { grid-area: new-ai; }
+          .principles-v2-stage.is-zh .principles-v2-node strong {
+            font-size: 19px;
+            line-height: 1.15;
+          }
 
-          .principles-v2-node.new:hover,
-          .principles-v2-node.new:focus-visible,
-          .principles-v2-node.new.is-active,
-          .principles-v2-node.old:hover,
-          .principles-v2-node.old:focus-visible,
-          .principles-v2-node.old.is-source {
-            transform: none;
+          .principles-v2-node.internet.old { left: 0; top: 30px; }
+          .principles-v2-node.bitcoin.old { left: 0; top: 220px; }
+          .principles-v2-node.ai.old { left: 0; top: 410px; }
+          .principles-v2-node.internet.new { right: 0; top: 30px; }
+          .principles-v2-node.bitcoin.new { right: 0; top: 220px; }
+          .principles-v2-node.ai.new { right: 0; top: 410px; }
+
+          .principles-v2-stage::before {
+            width: min(86vw, 420px);
+            top: 250px;
           }
 
           .principles-v2-core {
-            position: relative;
-            left: auto;
-            top: auto;
-            grid-area: core;
-            width: 118px;
-            height: 118px;
-            margin: 42px auto 50px;
-            transform: none;
+            width: 96px;
+            height: 96px;
+            top: 250px;
           }
 
           .principles-v2-core span {
-            font-size: 32px;
-          }
-
-          .principles-v2-stage::before,
-          .principles-v2-paths {
-            display: none;
+            font-size: 26px;
           }
 
           .principles-v2-readout {
-            position: relative;
-            left: auto;
+            top: 500px;
             bottom: auto;
-            grid-area: readout;
-            width: 100%;
-            transform: none;
+            width: calc(100% - 8px);
+            padding-top: 14px;
+          }
+
+          .principles-v2-readout strong {
+            font-size: 20px;
           }
 
           .principles-v2-section {
