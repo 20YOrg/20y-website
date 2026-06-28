@@ -214,7 +214,7 @@ function PrinciplesV2() {
         </div>
       </div>
 
-      <section className="principles-v2-ticker" aria-hidden="true">
+      <section className={`principles-v2-ticker${locale === 'zh' ? ' is-zh' : ''}`} aria-hidden="true">
         <div>
           <span>{t('ticker.internet')}</span>
           <span>{t('ticker.bitcoin')}</span>
@@ -568,7 +568,7 @@ function PrinciplesV2() {
         .principles-v2-ticker div {
           display: flex;
           width: max-content;
-          animation: principles-v2-ticker 28s linear infinite;
+          animation: principles-v2-ticker 38s linear infinite;
         }
 
         .principles-v2-ticker span {
@@ -577,6 +577,11 @@ function PrinciplesV2() {
           color: #444444;
           font-family: var(--font-serif);
           font-size: 24px;
+        }
+
+        .principles-v2-ticker.is-zh span {
+          font-family: var(--font-sans);
+          font-size: 17px;
         }
 
         .principles-v2-section {
