@@ -51,7 +51,6 @@ export default function EventsGallery() {
         }
         .gallery-track {
           display: flex;
-          gap: 10px;
           width: max-content;
           animation: gallery-scroll 120s linear infinite;
         }
@@ -62,6 +61,7 @@ export default function EventsGallery() {
           flex-shrink: 0;
           width: 140px;
           height: 100px;
+          margin-right: 10px;
           border-radius: 12px;
           overflow: hidden;
         }

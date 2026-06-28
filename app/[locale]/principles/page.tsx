@@ -54,6 +54,11 @@ function PrinciplesV2() {
     { key: 'conviction' as const },
   ]
 
+  // One half repeated enough times to overflow the viewport, then doubled
+  // for a seamless -50% loop with no gap at the wrap point.
+  const tickerKeys = ['internet', 'bitcoin', 'ai', 'exit'] as const
+  const tickerHalf = Array.from({ length: 3 }, () => tickerKeys).flat()
+
   const activateLayer = (layer: 'internet' | 'bitcoin' | 'ai') => {
     setActiveLayer(layer)
   }
@@ -216,14 +221,9 @@ function PrinciplesV2() {
 
       <section className={`principles-v2-ticker${locale === 'zh' ? ' is-zh' : ''}`} aria-hidden="true">
         <div>
-          <span>{t('ticker.internet')}</span>
-          <span>{t('ticker.bitcoin')}</span>
-          <span>{t('ticker.ai')}</span>
-          <span>{t('ticker.exit')}</span>
-          <span>{t('ticker.internet')}</span>
-          <span>{t('ticker.bitcoin')}</span>
-          <span>{t('ticker.ai')}</span>
-          <span>{t('ticker.exit')}</span>
+          {[...tickerHalf, ...tickerHalf].map((key, i) => (
+            <span key={i}>{t(`ticker.${key}`)}</span>
+          ))}
         </div>
       </section>
 
@@ -568,15 +568,21 @@ function PrinciplesV2() {
         .principles-v2-ticker div {
           display: flex;
           width: max-content;
-          animation: principles-v2-ticker 38s linear infinite;
+          animation: principles-v2-ticker 90s linear infinite;
         }
 
         .principles-v2-ticker span {
-          padding: 18px 28px;
+          padding: 18px 0;
           white-space: nowrap;
           color: #444444;
           font-family: var(--font-serif);
           font-size: 24px;
+        }
+
+        .principles-v2-ticker span::after {
+          content: "·";
+          margin: 0 22px;
+          color: #bbbbbb;
         }
 
         .principles-v2-ticker.is-zh span {
